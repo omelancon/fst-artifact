@@ -222,13 +222,13 @@ cat >> $legendfile <<EOF
 \newcommand{\legendgambittimealloc}{
 \begin{center}
 \begin{tabular}{l}
-\colorrect{self-tagging (1-tag)}{$COLORFLTONE}
+\colorrect{self-tagging (4-tag)}{$COLORFLTFOUR}
 \end{tabular}
 \end{center}
 }
 EOF
 
-plot $PLOTDIR/gambit_time_alloc_$host.pdf "#$COLORFLTONE" "7,2" "3" "off" "0.2" "" "[0.2:2.9]" $STATS/gambit_0.stat $STATS/gambit_4.stat
+plot $PLOTDIR/gambit_time_alloc_$host.pdf "#$COLORFLTFOUR" "7,2" "3" "off" "0.2" "" "[0.2:2.9]" $STATS/gambit_0.stat $STATS/gambit_4.stat
 plot $PLOTDIR/bigloo_time_alloc_$host.pdf "#$COLORFLTONE" "7,2" "3" "off" "0.2" "" "[0.2:2.9]" $STATS/bigloo.stat $STATS/bigloo_flt.stat
 
 #*---------------------------------------------------------------------*/
