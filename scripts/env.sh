@@ -10,7 +10,7 @@
 #*    Artifcat environment variables                                   */
 #*=====================================================================*/
 
-REPETITION=5
+REPETITION=10
 FST_ARTIFACT_ROOT=${FST_ARTIFACT_ROOT:-$PWD}
 
 downloaddir=${DOWNLOADDIR:-$FST_ARTIFACT_ROOT/download/${package}}
