@@ -11,6 +11,7 @@ set terminal pdf font "Verdana,12" size 7,2
 
 set title ''
 set ylabel "relative time" offset 0,0
+set tmargin 0.2
 
 set auto x
 
@@ -24,7 +25,7 @@ set ytics font "Verdana,10"
 
 set boxwidth 0.9
 set style fill solid
-set style line 1 linecolor rgb '#FF00FF' linetype 1 linewidth 1
+set style line 1 linecolor rgb '#aaaaaa' linetype 1 linewidth 1
 set style line 2 linecolor rgb '#fa9600' linetype 1 linewidth 1
 set style line 3 linecolor rgb '#d83812' linetype 1 linewidth 1
 set style line 4 linecolor rgb '#109318' linetype 1 linewidth 1

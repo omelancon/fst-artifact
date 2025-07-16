@@ -1,0 +1,30 @@
+(monitor (info (exec "./a.out") (version "0.0.4") (sizeof-word 1))
+  (gc
+    (number: 0 alloc: #l1032746 heap: #l4259840 live: #l220272 lastfun: "unknown" time: #l1752652495980616000)
+    (number: 1 alloc: #l1116994 heap: #l4259840 live: #l199728 lastfun: "unknown" time: #l1752652496034344000)
+    (number: 2 alloc: #l1122277 heap: #l4259840 live: #l236928 lastfun: "unknown" time: #l1752652496088471000)
+    (number: 3 alloc: #l1112446 heap: #l4259840 live: #l208880 lastfun: "unknown" time: #l1752652496142106000)
+    (number: 4 alloc: #l1120400 heap: #l4259840 live: #l243456 lastfun: "unknown" time: #l1752652496196141000)
+    (number: 5 alloc: #l1110360 heap: #l4259840 live: #l212864 lastfun: "unknown" time: #l1752652496249678000)
+    (number: 6 alloc: #l1118229 heap: #l4259840 live: #l246624 lastfun: "unknown" time: #l1752652496303653000)
+    (number: 7 alloc: #l1110098 heap: #l4259840 live: #l214224 lastfun: "unknown" time: #l1752652496357209000)
+    (number: 8 alloc: #l1117123 heap: #l4259840 live: #l196848 lastfun: "unknown" time: #l1752652496411110000)
+    (number: 9 alloc: #l714333 heap: #l4259840 live: #l167248 lastfun: "unknown" time: #l1752652496445695000)
+   )
+  (alloc 
+    (kbsize 10424)
+    (gc-count 10)
+    (files
+      (file: "lib/init.c"
+       lines: ((line: 574 kbsize: 47 %: 0 count: 64 types: #("vector" "keyword" "input-port" "output-port" "string" "mutex"))))
+      (file: "/misc/serrano/flt-artifact/download/bglstone/src/r7rs-parsing/bigloo/r7rs-parsing.c"
+       lines: ((line: 2991 kbsize: 9719 %: 0 count: 493250 types: #("string"))          (line: 1958 kbsize: 253 %: 0 count: 250 types: #("string"))          (line: 9656 kbsize: 182 %: 0 count: 10500 types: #("string"))          (line: 559 kbsize: 48 %: 0 count: 1287 types: #("string" "mutex" "bignum" "?" "pair" "class" "vector" "keyword" "symbol"))))
+       )
+   )
+  (types
+    (count 512247)
+    (types
+      (string (kbsize: 10244 %: 98.2751 cnt: 505576))
+      (pair (kbsize: 83 %: 0.801723 cnt: 5349))
+   ))
+)

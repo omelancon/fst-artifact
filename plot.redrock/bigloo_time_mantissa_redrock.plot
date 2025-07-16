@@ -11,6 +11,7 @@ set terminal pdf font "Verdana,12" size 8,2
 
 set title ''
 set ylabel "relative time" offset 0,0
+set tmargin 0.2
 
 set auto x
 
