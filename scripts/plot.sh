@@ -60,7 +60,7 @@ plot() {
   stats=$*
 
   if [ ! -f $pdf ] || [ $pdf -ot $plot.plot ]; then
-    $downloaddir/bglstone/bin/gnuplothistogram -o $plotdir/$plot --size $size --tmargin $tmargin --relative-sans-left $stats --benchmarks "$SCM_BENCHMARKS" --logscale --separator 12 --rename "Bigloo.fltlb" "self-tagging (2-tag, mantissa low-bits)" --rename "Bigloo.fltnz" "self-tagging (2-tag)" --rename "Bigloo.flt" "self-tagging (3-tag)" --rename "Bigloo.flt1" "self-tagging (1-tag)" --rename "Bigloo.nan" "NaN-boxing" --rename "Bigloo.nun" "" --rename "Bigloo.bigloo" "" --rename "Bigloo" "" --rename "Gambit.nun" "" --rename "Gambit.0" "" --rename "Gambit.1" "self-tagging (1-tag)" --rename "Gambit.2" "self-tagging (2-tag)" --rename "Gambit.3" "self-tagging (3-tag)" --rename "Gambit.4" "self-tagging (4-tag)" --values --colors "$colors" --bmargin $bmargin --key "$key" --title "$title" --v-fontsize 4 --errorbars --range $range \
+    $downloaddir/bglstone/bin/gnuplothistogram -o $plotdir/$plot --size $size --tmargin $tmargin --relative-sans-left $stats --benchmarks "$SCM_BENCHMARKS" --logscale --separator 12 --rename "Bigloo.fltlb" "self-tagging (2-tag, mantissa low-bits)" --rename "Bigloo.fltnz" "self-tagging (2-tag)" --rename "Bigloo.flt" "self-tagging (3-tag)" --rename "Bigloo.flt1" "self-tagging (1-tag)" --rename "Bigloo.nan" "NaN-boxing" --rename "Bigloo.nun" "" --rename "Bigloo.bigloo" "" --rename "Bigloo" "" --rename "Gambit.nun" "" --rename "Gambit" "" --rename "gambit" "" --rename "Gambit.0" "" --rename "Gambit.1" "self-tagging (1-tag)" --rename "Gambit.2" "self-tagging (2-tag)" --rename "Gambit.3" "self-tagging (3-tag)" --rename "Gambit.4" "self-tagging (4-tag)" --values --colors "$colors" --bmargin $bmargin --key "$key" --title "$title" --v-fontsize 4 --errorbars --range $range \
       && (cd $plotdir; unprefix $plot.csv) \
       && (cd $plotdir; gnuplot $plot.plot) 
   fi
@@ -116,6 +116,7 @@ cat >> $legendfile <<EOF
 \newcommand{\htmlColorFourTag}{$COLORFLTFOUR}
 \newcommand{\htmlColorTwoTagNZ}{$COLORFLTNZ}
 \newcommand{\htmlColorNan}{$COLORNAN}
+\newcommand{\htmlColorAlloc}{$COLORALLOC}
 
 \definecolor{tag0}{HTML}{$COLORFLT}
 \definecolor{tag3}{HTML}{$COLORFLTNZ}
@@ -123,12 +124,14 @@ cat >> $legendfile <<EOF
 \definecolor{tag7}{HTML}{$COLORFLTFOUR}
 \definecolor{1tag}{HTML}{$COLORFLTONE}
 \definecolor{2tag}{HTML}{$COLORFLT2}
+\definecolor{alloc}{HTML}{$COLORALLOC}
 \newcommand{\tagzerocolorname}{$COLORFLT_NAME\xspace}
 \newcommand{\tagthreecolorname}{$COLORFLTNZ_NAME\xspace}
 \newcommand{\tagfourcolorname}{$COLORFLTNZ_LIGHT_NAME\xspace}
 \newcommand{\tagsevencolorname}{$COLORFLTFOUR_NAME\xspace}
 \newcommand{\onetagcolorname}{$COLORFLTONE_NAME\xspace}
 \newcommand{\twotagcolorname}{$COLORFLT2_NAME\xspace}
+\newcommand{\alloccolorname}{$COLORALLOC\xspace}
 EOF
 
 cat >> $repetitionsfile <<EOF
@@ -292,13 +295,38 @@ mkdir -p $PLOTDIR/gc
 for benchmark in $SCM_FLOAT_BENCHMARKS; do
   gnuplot -e "benchmark='$benchmark'" \
           -e "bigloo_orig='$HEAPS/$benchmark/bigloo.heap'" \
+          -e "bigloo_orig_name='Bigloo (alloc)'" \
+          -e "bigloo_orig_color='#$COLORALLOC'" \
           -e "bigloo_fst='$HEAPS/$benchmark/bigloo_flt1.heap'" \
+          -e "bigloo_fst_name='Bigloo (self-tagging, 1-tag)'" \
+          -e "bigloo_fst_color='#$COLORFLTONE'" \
           -e "gambit_orig='$HEAPS/$benchmark/gambit_0.heap'" \
-          -e "gambit_fst='$HEAPS/$benchmark/gambit_1.heap'" \
+          -e "gambit_orig_name='Gambit (alloc)'" \
+          -e "gambit_orig_color='#$COLORALLOC'" \
+          -e "gambit_fst='$HEAPS/$benchmark/gambit_4.heap'" \
+          -e "gambit_fst_name='Gambit (self-tagging, 4-tag)'" \
+          -e "gambit_fst_color='#$COLORFLTFOUR'" \
           -e "output='$PLOTDIR/gc/$benchmark.pdf'" \
-	  -e "smallest_non_zero_vector='$SCM_SMALLEST_NON_ZERO_SIZE'" \
+	        -e "smallest_non_zero_vector='$SCM_SMALLEST_NON_ZERO_SIZE'" \
           $dir/plot_gc.gp
 done
+
+# The line below is used to generate the legend
+gnuplot -e "bigloo_orig='$HEAPS/$benchmark/bigloo.heap'" \
+        -e "bigloo_orig_name='Bigloo (alloc)'" \
+        -e "bigloo_orig_color='#$COLORALLOC'" \
+        -e "bigloo_fst='$HEAPS/$benchmark/bigloo_flt1.heap'" \
+        -e "bigloo_fst_name='Bigloo (self-tagging, 1-tag)'" \
+        -e "bigloo_fst_color='#$COLORFLTONE'" \
+        -e "gambit_orig='$HEAPS/$benchmark/gambit_0.heap'" \
+        -e "gambit_orig_name='Gambit (alloc)'" \
+        -e "gambit_orig_color='#$COLORALLOC'" \
+        -e "gambit_fst='$HEAPS/$benchmark/gambit_4.heap'" \
+        -e "gambit_fst_name='Gambit (self-tagging, 4-tag)'" \
+        -e "gambit_fst_color='#$COLORFLTFOUR'" \
+        -e "legend_only=1" \
+        -e "output='$PLOTDIR/gc/legend.pdf'" \
+        $dir/plot_gc.gp
 
 #*---------------------------------------------------------------------*/
 #*    Scheme performance                                               */
@@ -318,11 +346,6 @@ done
 #* plot $PLOTDIR/bigloo_vs_nan.pdf "#$COLORNAN,#$COLORNUN,#$COLORFLTONE" "8,2" "5" "under nobox" "Relative time (@PROCESSOR@)" "[0:*]" $STATS/bigloo.stat $STATS/bigloo_nan.stat $STATS/bigloo_nun.stat $STATS/bigloo_flt1.stat */
 #*                                                                     */
 # figure 8 (gc)
-
-# The line below is used to generate the legend
-gnuplot -e "legend_only=1" \
-        -e "output='$PLOTDIR/gc/legend.pdf'" \
-        $dir/plot_gc.gp
 
 #* {*---------------------------------------------------------------------*} */
 #* {*    Memory                                                           *} */
