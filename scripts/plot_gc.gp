@@ -37,10 +37,10 @@ if (exists("legend_only")) {
     set key left
 
     plot \
+        NaN with linespoints title bigloo_orig_name linecolor rgb bigloo_orig_color dashtype (30,15,30,15) ps 2 lw 3 pointtype 9, \
         NaN with linespoints title bigloo_fst_name linecolor rgb bigloo_fst_color ps 2 lw 3 pointtype 9, \
-        NaN with linespoints title gambit_fst_name linecolor rgb gambit_fst_color ps 2 lw 3 pointtype 5, \
-        NaN with linespoints title bigloo_orig_name linecolor rgb bigloo_orig_color dashtype (30,15,30,15) ps 2 lw 3 pointtype 8, \
-        NaN with linespoints title gambit_orig_name linecolor rgb gambit_orig_color dashtype (30,15,30,15) ps 2 lw 3 pointtype 4
+        NaN with linespoints title gambit_orig_name linecolor rgb gambit_orig_color dashtype (30,15,30,15) ps 2 lw 3 pointtype 4, \
+        NaN with linespoints title gambit_fst_name linecolor rgb gambit_fst_color ps 2 lw 3 pointtype 4
 
     exit 0
 }
@@ -124,9 +124,9 @@ set bmargin 7
 unset key
 
 plot \
-    bigloo_orig using (zx($1)):2 with linespoints title bigloo_orig_name linecolor rgb bigloo_orig_color dashtype (50,30,50,30) ps 2 lw 2 pointtype 8, \
+    bigloo_orig using (zx($1)):2 with linespoints title bigloo_orig_name linecolor rgb bigloo_orig_color dashtype (50,30,50,30) ps 2 lw 2 pointtype 9, \
+    bigloo_fst  using (zx($1)):2 with linespoints title bigloo_fst_name linecolor rgb bigloo_fst_color ps 2 lw 3 pointtype 9, \
     gambit_orig using (zx($1)):2 with linespoints title gambit_orig_name linecolor rgb gambit_orig_color dashtype (50,30,50,30) ps 2 lw 2 pointtype 4, \
-    gambit_fst  using (zx($1)):2 with linespoints title gambit_fst_name linecolor rgb gambit_fst_color ps 2 lw 3 pointtype 5, \
-    bigloo_fst  using (zx($1)):2 with linespoints title bigloo_fst_name linecolor rgb bigloo_fst_color ps 2 lw 3 pointtype 9
+    gambit_fst  using (zx($1)):2 with linespoints title gambit_fst_name linecolor rgb gambit_fst_color ps 2 lw 3 pointtype 4
 
 exit 0

@@ -17,6 +17,7 @@ path=`realpath $0`
 dir=`dirname $path`
 
 . $dir/env.sh
+. $dir/versions.sh
 
 set -u
 
@@ -108,6 +109,9 @@ echo > $ratiofile
 echo > $legendfile
 echo > $repetitionsfile
 
+BIGLOO_COMMIT_SHORT=$(echo "$bigloo_commit" | cut -c1-6)
+GAMBIT_COMMIT_SHORT=$(echo "$gambit_commit" | cut -c1-6)
+
 cat >> $legendfile <<EOF
 % used to highlight cells in interval table
 \newcommand{\htmlColorOneTag}{$COLORFLTONE}
@@ -132,6 +136,9 @@ cat >> $legendfile <<EOF
 \newcommand{\onetagcolorname}{$COLORFLTONE_NAME\xspace}
 \newcommand{\twotagcolorname}{$COLORFLT2_NAME\xspace}
 \newcommand{\alloccolorname}{$COLORALLOC\xspace}
+
+\newcommand{\bigloocommit}{$BIGLOO_COMMIT_SHORT\xspace}
+\newcommand{\gambitcommit}{$GAMBIT_COMMIT_SHORT\xspace}
 EOF
 
 cat >> $repetitionsfile <<EOF
