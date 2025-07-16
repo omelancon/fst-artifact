@@ -71,7 +71,7 @@ for gambit in $GAMBITS; do
 done
 
 # performance with data on heap
-for bigloo in $BIGLOOS; do
+for bigloo in bigloo bigloo_flt1; do
   echo "\e[1;31m=== heap ($bigloo)\e[0m"
   conf=`echo $bigloo | sed -e 's/bigloo//'`
   bglstone="bglstone$conf"
@@ -100,7 +100,7 @@ for bigloo in $BIGLOOS; do
   done
 done
 
-for gambit in $GAMBITS; do
+for gambit in gambit_0 gambit_4; do
   echo "\e[1;31m=== heap ($gambit)\e[0m"
   bglstone="bglstone_$gambit"
   for benchmark in $SCM_FLOAT_BENCHMARKS; do
