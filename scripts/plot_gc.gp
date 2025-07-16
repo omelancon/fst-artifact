@@ -19,7 +19,7 @@
 set output output
 
 if (exists("legend_only")) {
-    set terminal pdf font 'Verdana,28' size 10.6,1
+    set terminal pdf font 'Verdana,28' size 12.5,1.1
     set xrange [0:1]
     set yrange [0:1]
 
