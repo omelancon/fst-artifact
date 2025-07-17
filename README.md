@@ -181,6 +181,14 @@ Run all benchmarks (takes about 10 hours):
 (qemu) scripts/run.sh
 ```
 
+For better stability of the executions, it is advised to run all the benchmarks
+on the same cpu and to disable randomization. On Linux, this can be
+done with the `taskset` and `setarch` command. Example:
+
+```shell
+(qemu) taskset -c 1 setarch -R scripts/run.sh
+```
+
 This executes all the benchmarks and stores the results in the following
 directories:
 
@@ -231,7 +239,7 @@ Inside the bare Debian VM run the following commands:
 ```
 (qemu) sudo apt update
 (qemu) sudo apt dist-upgrade
-(qemu) sudo apt install -y libgmp-dev libgmp10 autoconf automake libtool libunistring-dev gnuplot bc
+(qemu) sudo apt install -y libgmp-dev libgmp10 autoconf automake libtool libunistring-dev gnuplot bc util-linux
 (qemu) git clone https://github.com:omelancon/fst-artifact
 ```
 
