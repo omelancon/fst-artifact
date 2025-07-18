@@ -1,6 +1,6 @@
 (monitor (info (exec "./a.out") (version "0.0.4") (sizeof-word 1))
   (gc
-    (number: 0 alloc: #l103029 heap: #l4259840 live: #l124176 lastfun: "unknown" time: #l1752654549682748000)
+    (number: 0 alloc: #l103029 heap: #l4259840 live: #l124176 lastfun: "unknown" time: #l1752830771980953000)
    )
   (alloc 
     (kbsize 100)

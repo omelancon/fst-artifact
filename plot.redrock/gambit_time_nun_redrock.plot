@@ -34,7 +34,7 @@ set style fill solid
 set style line 1 linecolor rgb '#FF00FF' linetype 1 linewidth 1
 set style line 2 linecolor rgb '#ffb6f3' linetype 1 linewidth 1
 set style line 3 linecolor rgb '#61D836' linetype 1 linewidth 1
-set style line 4 linecolor rgb '#aaaaaa' linetype 1 linewidth 1
+set style line 4 linecolor rgb '#909090' linetype 1 linewidth 1
 set style line 5 linecolor rgb '#93ade2' linetype 1 linewidth 1
 set style line 6 linecolor rgb '#edd20b' linetype 1 linewidth 1
 set style line 7 linecolor rgb '#00a0bf' linetype 1 linewidth 1

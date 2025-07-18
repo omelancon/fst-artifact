@@ -175,7 +175,7 @@ The artifact is in the folder `fst-artifact`
 
 ### Run benchmarks
 
-Run all benchmarks (takes about 10 hours):
+Run all benchmarks (takes about 19 hours on a modern fast machine):
 
 ```shell
 (qemu) scripts/run.sh
