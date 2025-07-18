@@ -27,6 +27,11 @@ repetitionsfile="$PLOTDIR/repetitions.tex"
 
 mkdir -p $PLOTDIR
 
+TIME_PLOT_RANGE="[0.15:2.9]"
+TIME_VS_NUM_PLOT_RANGE="$TIME_PLOT_RANGE"
+TIME_VS_ALLOC_PLOT_RANGE="$TIME_PLOT_RANGE"
+MANTISSA_PLOT_RANGE="$TIME_PLOT_RANGE"
+
 #*---------------------------------------------------------------------*/
 #*    unprefix                                                         */
 #*---------------------------------------------------------------------*/
@@ -174,8 +179,8 @@ cat >> $legendfile <<EOF
 }
 EOF
 
-plot $PLOTDIR/bigloo_time_nun_$host.pdf "#$COLORFLTONE,#$COLORFLTNZ,#$COLORFLT,#$COLORNAN" "7,2" "3" "off" "0.2" "" "[0.2:2.9]" $STATS/bigloo_nun.stat $STATS/bigloo_flt1.stat $STATS/bigloo_fltnz.stat $STATS/bigloo_flt.stat $STATS/bigloo_nan.stat
-plot $PLOTDIR/gambit_time_nun_$host.pdf "#$COLORFLTONE,#$COLORFLT2,#$COLORFLT,#$COLORFLTFOUR" "7,2" "3" "off" "0.2" "" "[0.2:2.9]" $STATS/gambit_nun.stat $STATS/gambit_1.stat $STATS/gambit_2.stat $STATS/gambit_3.stat $STATS/gambit_4.stat
+plot $PLOTDIR/bigloo_time_nun_$host.pdf "#$COLORFLTONE,#$COLORFLTNZ,#$COLORFLT,#$COLORNAN" "7,2" "3" "off" "0.2" "" "$TIME_VS_NUM_PLOT_RANGE" $STATS/bigloo_nun.stat $STATS/bigloo_flt1.stat $STATS/bigloo_fltnz.stat $STATS/bigloo_flt.stat $STATS/bigloo_nan.stat
+plot $PLOTDIR/gambit_time_nun_$host.pdf "#$COLORFLTONE,#$COLORFLT2,#$COLORFLT,#$COLORFLTFOUR" "7,2" "3" "off" "0.2" "" "$TIME_VS_NUM_PLOT_RANGE" $STATS/gambit_nun.stat $STATS/gambit_1.stat $STATS/gambit_2.stat $STATS/gambit_3.stat $STATS/gambit_4.stat
 
 latex_friendly_host=$(make_latexfriendly $host)
 
@@ -238,8 +243,8 @@ cat >> $legendfile <<EOF
 }
 EOF
 
-plot $PLOTDIR/gambit_time_alloc_$host.pdf "#$COLORFLTFOUR" "7,2" "3" "off" "0.2" "" "[0.2:2.9]" $STATS/gambit_0.stat $STATS/gambit_4.stat
-plot $PLOTDIR/bigloo_time_alloc_$host.pdf "#$COLORFLTONE" "7,2" "3" "off" "0.2" "" "[0.2:2.9]" $STATS/bigloo.stat $STATS/bigloo_flt.stat
+plot $PLOTDIR/gambit_time_alloc_$host.pdf "#$COLORFLTFOUR" "7,2" "3" "off" "0.2" "" "$TIME_VS_ALLOC_PLOT_RANGE" $STATS/gambit_0.stat $STATS/gambit_4.stat
+plot $PLOTDIR/bigloo_time_alloc_$host.pdf "#$COLORFLTONE" "7,2" "3" "off" "0.2" "" "$TIME_VS_ALLOC_PLOT_RANGE" $STATS/bigloo.stat $STATS/bigloo_flt.stat
 
 #*---------------------------------------------------------------------*/
 #*    COMP_time_mantissa_ARCH.pdf                                      */
@@ -252,7 +257,7 @@ cat >> $legendfile <<EOF
 }
 EOF
 
-plot $PLOTDIR/bigloo_time_mantissa_$host.pdf "#$COLORFLTLB" "8,2" "2.5" "off" "0.2" "" "[0.125:2.5]" $STATS/bigloo.stat $STATS/bigloo_fltlb.stat
+plot $PLOTDIR/bigloo_time_mantissa_$host.pdf "#$COLORFLTLB" "8,2" "2.5" "off" "0.2" "" "$MANTISSA_PLOT_RANGE" $STATS/bigloo.stat $STATS/bigloo_fltlb.stat
 
 #*---------------------------------------------------------------------*/
 #*    COMP_mem_ARCH.pdf                                                */
