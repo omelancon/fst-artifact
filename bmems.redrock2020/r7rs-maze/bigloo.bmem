@@ -1,0 +1,41 @@
+(monitor (info (exec "./a.out") (version "0.0.4") (sizeof-word 1))
+  (gc
+    (number: 0 alloc: #l2090384 heap: #l4259840 live: #l196784 lastfun: "unknown" time: #l1752874102126723000)
+    (number: 1 alloc: #l1939680 heap: #l4259840 live: #l192480 lastfun: "unknown" time: #l1752874102170506000)
+    (number: 2 alloc: #l1954200 heap: #l4259840 live: #l209888 lastfun: "unknown" time: #l1752874102214522000)
+    (number: 3 alloc: #l1947328 heap: #l4259840 live: #l177968 lastfun: "unknown" time: #l1752874102258291000)
+    (number: 4 alloc: #l1954264 heap: #l4259840 live: #l209888 lastfun: "unknown" time: #l1752874102302289000)
+    (number: 5 alloc: #l1947328 heap: #l4259840 live: #l177616 lastfun: "unknown" time: #l1752874102346021000)
+    (number: 6 alloc: #l1954264 heap: #l4259840 live: #l209888 lastfun: "unknown" time: #l1752874102389987000)
+    (number: 7 alloc: #l1947296 heap: #l4259840 live: #l178112 lastfun: "unknown" time: #l1752874102433790000)
+    (number: 8 alloc: #l1954216 heap: #l4259840 live: #l209888 lastfun: "unknown" time: #l1752874102477749000)
+    (number: 9 alloc: #l1947280 heap: #l4259840 live: #l177760 lastfun: "unknown" time: #l1752874102521475000)
+    (number: 10 alloc: #l1954264 heap: #l4259840 live: #l209888 lastfun: "unknown" time: #l1752874102565447000)
+    (number: 11 alloc: #l1947296 heap: #l4259840 live: #l178112 lastfun: "unknown" time: #l1752874102609227000)
+    (number: 12 alloc: #l1954216 heap: #l4259840 live: #l209888 lastfun: "unknown" time: #l1752874102653211000)
+    (number: 13 alloc: #l1947280 heap: #l4259840 live: #l177760 lastfun: "unknown" time: #l1752874102696960000)
+    (number: 14 alloc: #l1954264 heap: #l4259840 live: #l209888 lastfun: "unknown" time: #l1752874102741003000)
+    (number: 15 alloc: #l1947296 heap: #l4259840 live: #l178112 lastfun: "unknown" time: #l1752874102784738000)
+    (number: 16 alloc: #l1954216 heap: #l4259840 live: #l209888 lastfun: "unknown" time: #l1752874102828762000)
+    (number: 17 alloc: #l1947280 heap: #l4259840 live: #l177760 lastfun: "unknown" time: #l1752874102873478000)
+    (number: 18 alloc: #l1954264 heap: #l4259840 live: #l209888 lastfun: "unknown" time: #l1752874102917381000)
+    (number: 19 alloc: #l126744 heap: #l4259840 live: #l185056 lastfun: "unknown" time: #l1752874102920605000)
+   )
+  (alloc 
+    (kbsize 36448)
+    (gc-count 20)
+    (files
+      (file: "lib/init.c"
+       lines: ((line: 574 kbsize: 47 %: 0 count: 64 types: #("vector" "keyword" "input-port" "output-port" "string" "mutex"))))
+      (file: "/misc/serrano/flt-artifact/download/bglstone/src/r7rs-maze/bigloo/r7rs-maze.c"
+       lines: ((line: 3359 kbsize: 14335 %: 0 count: 367000 types: #("vector"))          (line: 4438 kbsize: 9843 %: 0 count: 140000 types: #("procedure"))          (line: 3498 kbsize: 7656 %: 0 count: 140000 types: #("vector"))          (line: 6315 kbsize: 2875 %: 0 count: 1000 types: #("vector"))          (line: 5252 kbsize: 1101 %: 0 count: 1000 types: #("vector"))          (line: 7404 kbsize: 218 %: 0 count: 7000 types: #("vector"))          (line: 416 kbsize: 47 %: 0 count: 1287 types: #("string" "mutex" "bignum" "?" "pair" "class" "vector" "keyword" "symbol"))          (line: 8888 kbsize: 41 %: 0 count: 2662 types: #("pair"))          (line: 10341 kbsize: 41 %: 0 count: 2630 types: #("pair"))          (line: 4815 kbsize: 39 %: 0 count: 1000 types: #("vector"))))
+       )
+   )
+  (types
+    (count 672954)
+    (types
+      (vector (kbsize: 26335 %: 72.253 cnt: 519271))
+      (procedure (kbsize: 9843 %: 27.0077 cnt: 140003))
+      (pair (kbsize: 122 %: 0.337033 cnt: 7862))
+   ))
+)

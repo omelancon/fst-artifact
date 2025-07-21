@@ -1,0 +1,30 @@
+(monitor (info (exec "./a.out") (version "0.0.4") (sizeof-word 1))
+  (gc
+    (number: 0 alloc: #l1033108 heap: #l4259840 live: #l221456 lastfun: "unknown" time: #l1752875226010144000)
+    (number: 1 alloc: #l1116973 heap: #l4259840 live: #l200816 lastfun: "unknown" time: #l1752875226101703000)
+    (number: 2 alloc: #l1122255 heap: #l4259840 live: #l238080 lastfun: "unknown" time: #l1752875226192534000)
+    (number: 3 alloc: #l1112489 heap: #l4259840 live: #l210048 lastfun: "unknown" time: #l1752875226282362000)
+    (number: 4 alloc: #l1120400 heap: #l4259840 live: #l244640 lastfun: "unknown" time: #l1752875226372793000)
+    (number: 5 alloc: #l1110340 heap: #l4259840 live: #l214016 lastfun: "unknown" time: #l1752875226462313000)
+    (number: 6 alloc: #l1118229 heap: #l4259840 live: #l247808 lastfun: "unknown" time: #l1752875226552137000)
+    (number: 7 alloc: #l1110080 heap: #l4259840 live: #l215408 lastfun: "unknown" time: #l1752875226641633000)
+    (number: 8 alloc: #l1117161 heap: #l4259840 live: #l198032 lastfun: "unknown" time: #l1752875226731781000)
+    (number: 9 alloc: #l714333 heap: #l4259840 live: #l168432 lastfun: "unknown" time: #l1752875226789605000)
+   )
+  (alloc 
+    (kbsize 10425)
+    (gc-count 10)
+    (files
+      (file: "lib/init.c"
+       lines: ((line: 574 kbsize: 47 %: 0 count: 64 types: #("vector" "keyword" "input-port" "output-port" "string" "mutex"))))
+      (file: "/misc/serrano/flt-artifact/download/bglstone_flt/src/r7rs-parsing/bigloo/r7rs-parsing.c"
+       lines: ((line: 2991 kbsize: 9719 %: 0 count: 493250 types: #("string"))          (line: 1958 kbsize: 253 %: 0 count: 250 types: #("string"))          (line: 9656 kbsize: 182 %: 0 count: 10500 types: #("string"))          (line: 559 kbsize: 48 %: 0 count: 1287 types: #("string" "mutex" "bignum" "?" "pair" "class" "vector" "keyword" "symbol"))))
+       )
+   )
+  (types
+    (count 512247)
+    (types
+      (string (kbsize: 10245 %: 98.2719 cnt: 505576))
+      (pair (kbsize: 83 %: 0.801696 cnt: 5349))
+   ))
+)
