@@ -87,7 +87,7 @@ hop_nun_branch=$hop_branch
 
 # bglstone
 bglstone_giturl=https://github.com/manuel-serrano/bglstone
-bglstone_commit=a9fcfc4f0613a5f170e71ee09ea8ddc74a142f54
+bglstone_commit=cb0910ab4f1814c7d97579754a87f82c10c11e9b
 bglstone_branch=master
 
 bglstone_bflags="-O6 -freturn -freturn-goto -copt -O3 -static-all-bigloo"
