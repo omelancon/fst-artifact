@@ -264,7 +264,7 @@ Under Linux Debian or Ubuntu the requirements can be installed with:
 Once the requirements are installed and operational, clone the
 [GITHUB] (see above) repository and install all the compilers and
 benchmarks needed to produce the figures using the following command
-(which takes around 4-6 hours):
+(which takes around 1.5 hour on a fast modern machine):
 
 ```shell
 (host) scripts/install.sh
