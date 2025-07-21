@@ -8,6 +8,7 @@
 \usepackage{enumitem}
 \usepackage{amsmath}
 \usepackage{xspace}
+\usepackage{hyperref}
 
 \newcommand{\colorrect}[2]{\raisebox{2pt}{\colorbox[HTML]{#2}{\rule{0.25cm}{0cm}}} \space {\footnotesize #1}}
 \newcommand{\colorrectRight}[2]{{\footnotesize #1} \space \raisebox{2pt}{\colorbox[HTML]{#2}{\rule{0.25cm}{0cm}}}}
@@ -18,7 +19,13 @@
 \newcommand\sizospec{Apple M2 Max, 64GB, macOS 15.4.1, gcc 14.3.0}
 \newcommand\starfivespec{riscv sifive, u74-mc, 8GB, Linux starfive 6.1.31-starfive riscv64, gcc 14.2.0}
 
-% DATA: folder/name/hasmem/hasbranch/hasheap per entry
+% UPDATE \machineslist TO ADD NEW MACHINE:
+% format: id/spec/hasmem/hasbranch/hasheap
+%  - id: name of the machine as returned by 'uname -n'
+%  - spec: specifications of the machine
+%  - hasmem: is a plot for memory profiling available? [true/false]
+%  - hasbranch: is a plot for branch prediction profiling available? [true/false]
+%  - hasheap: is a plot for the experiment with non-empty heap available? [true/false]
 \newcommand{\machineslist}{
   redrock/\redrockspec/true/true/true,
   redrock2020/\redrockTTspec/false/false/false,
@@ -26,12 +33,11 @@
   starfive/\starfivespec/false/false/false
 }
 
-% DISPLAY
 \newcommand{\displayexperimentssummary}{
     \begin{quote}
-    \foreach \id/\name/\hasmem/\hasbranch/\hasheap in \machineslist {
-        Machine id: \textbf{\id}\\
-        Specs: \textbf{\footnotesize\name}\\
+    \footnotesize
+    \foreach \id/\spec/\hasmem/\hasbranch/\hasheap in \machineslist {
+        \textsc{\spec}\\
         Has memory profiling: \textbf{\hasmem}\\
         Has branch prediction profiling: \textbf{\hasbranch}\\
         Has preloaded heap experiment: \textbf{\hasheap}\\[1em]
@@ -40,10 +46,14 @@
 }
 
 \newcommand{\displayexperiments}{
-  \foreach \id/\name/\hasmem/\hasbranch/\hasheap in \machineslist {
-    \begin{figure}
+  \foreach \id/\spec/\hasmem/\hasbranch/\hasheap in \machineslist {
+    \subsection{\small\textsc{\spec}}
+    \label{section:\id}
+    \subsubsection{Execution Time Relative to NuN-Boxing}
+    \label{section:\id-time-nun}
+    \begin{figure}[!htb]
     \center
-    {\large\name}\\[1em]
+    {\textsc{\spec}}\\[1em]
     {\large Execution Time Relative to NuN-Boxing}\\[0.5em]
     \begin{subfigure}{0.98\linewidth}
         \includegraphics[width=\linewidth]{plot.\id/bigloo_time_nun_\id.pdf}\\[-3.5em]
@@ -55,16 +65,18 @@
         \legendgambittimenun
         \subcaption{Gambit}
     \end{subfigure}
-    \caption{ Execution time with each variant of self-tagging and
-        NaN-boxing relative to NuN-boxing. The y-axis shows execution time
+    \caption{ Execution time of self-tagging variants and
+        NaN-boxing. The y-axis shows execution time
         relative to NuN-boxing (dashed horizontal red line) on a logarithmic
         scale. $1.00\times$ indicates no change, lower means faster, and higher
         means slower execution than NuN-boxing. }
     \end{figure}
-
-    \begin{figure}
+    \clearpage
+    \subsubsection{Execution Time Relative to Allocated Floats}
+    \label{section:\id-time-alloc}
+    \begin{figure}[!htb]
     \center
-    {\large\name}\\[1em]
+    {\textsc{\spec}}\\[1em]
     {\large Execution Time Relative to Allocated Floats}\\[0.5em]
     \begin{subfigure}{0.98\linewidth}
         \includegraphics[width=\linewidth]{plot.\id/bigloo_time_alloc_\id.pdf}\\[-2.5em]
@@ -83,9 +95,12 @@
     \end{figure}
 
     \ifthenelse{\equal{\hasheap}{true}}{
-    \begin{figure}
+    \clearpage
+    \subsubsection{Execution Time With Non-Empty Heap}
+    \label{section:\id-time-heap}
+    \begin{figure}[!htb]
         \center
-        {\large\name}\\[1em]
+        {\large\textsc{\spec}}\\[1em]
         {\large Execution Time with Non-Empty Heap}\\[0.5em]
         \parbox{0.04\textwidth}{
             \centering
@@ -156,9 +171,12 @@
     }{}
 
     \ifthenelse{\equal{\hasmem}{true}}{
-      \begin{figure}
+      \clearpage
+      \subsubsection{Memory Profiling}
+      \label{section:\id-mem}
+      \begin{figure}[!htb]
         \center
-        {\large\name}\\[1em]
+        {\textsc{\spec}}\\[1em]
         {\large Heap Allocations Relative to Allocated Floats (Bigloo)}\\[0.5em]
         \includegraphics[width=\linewidth]{plot.\id/bigloo_mem_\id.pdf}\\[-2.5em]
         \legendbigloomem
@@ -170,9 +188,12 @@
     \end{figure}
     }{}
     \ifthenelse{\equal{\hasbranch}{true}}{
-      \begin{figure}
+      \clearpage
+      \subsubsection{Branch Misprediction}
+      \label{section:\id-branch}
+      \begin{figure}[!htb]
         \center
-        {\large\name}\\[1em]
+        {\textsc{\spec}}\\[1em]
         {\large Branch Misprediction of Self-Tagging with Low Bits (Bigloo)}\\[0.5em]
         \includegraphics[width=\linewidth]{plot.\id/bigloo_branch_\id.pdf}
         \legendbigloobranch
@@ -185,9 +206,12 @@
         \end{figure}
     }{}
 
-    \begin{figure}
+    \clearpage
+    \subsubsection{Execution Time of Self-Tagging with Mantissa Low Bits}
+    \label{section:\id-mantissa}
+    \begin{figure}[!htb]
         \center
-        {\large\name}\\[1em]
+        {\textsc{\spec}}\\[1em]
         {\large Execution Time of Self-Tagging with Low Bits (Bigloo)}\\[0.5em]
         \includegraphics[width=\linewidth]{plot.\id/bigloo_time_mantissa_\id.pdf}
         \legendbiglootimemantissa
@@ -198,7 +222,7 @@
             $1.00\times$ indicates no change, lower means faster, and higher
             means slower execution than allocated floats. }
     \end{figure}
-
+    \clearpage
   }
 }
 
@@ -209,7 +233,11 @@
 
 \maketitle
 
-\section{Content}
+\tableofcontents
+
+\clearpage
+
+\section{Overview}
 
 This document summarizes all results from the Float Self-Tagging artifact. It
 includes figures that were omitted in the Float Self-Tagging paper to avoid
@@ -220,21 +248,25 @@ tooling does not exists (such as branch prediction on an Apple M2) or because
 the experiment takes too long to run (such as the heap experiment on RISC-V,
 which would take several weeks).
 
-\subsection{Adding a machine}
+\subsection{Adding a Machine to this Document}
 
 To include results from a new machine in this summary:
 
 \begin{enumerate}[leftmargin=4em]
-    \item run \texttt{scripts/plot.sh} to generate figures
-    \item update the \texttt{\textbackslash machineslist} macro in \texttt{summary.tex}
-    \item regenerate this pdf from \texttt{summary.tex}
+    \item generate figures with \texttt{scripts/plot.sh}.\footnote{to generate
+    plots for another machine use \texttt{FST\_HOST=[name] scripts/plot.sh},
+    where \texttt{[name]} is the output of \texttt{uname -n} on the target machine.}
+    \item update the \texttt{\textbackslash machineslist} macro in \texttt{summary.tex}.
+    \item regenerate this pdf from \texttt{summary.tex}.
 \end{enumerate}
 
 This document was generated for the following machines:
 
 \displayexperimentssummary
 
-\newpage
+\clearpage
+
+\section{Results}
 
 \displayexperiments
 
