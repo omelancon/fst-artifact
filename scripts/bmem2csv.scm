@@ -203,7 +203,7 @@ set bmargin 3")
       (fprintf (current-error-port) "set label 1 '~a' font 'Verdana,10' at 20,1 offset -0.5,0.5 tc 'red'\n\n" (nice (car compilers)) *base-color*)
       
       (when sep
-	 (fprintf (current-error-port) "set arrow from ~a,0 to ~a,GPVAL_Y_MAX nohead ls 1000 dashtype 2 front\n\n"
+	 (fprintf (current-error-port) "set arrow from ~a,graph 0 to ~a,graph 1 nohead ls 1000 dashtype 2 front\n\n"
 	    (- *separator* 0.5) (- *separator* 0.5)))
 
       (fprintf (current-error-port) "plot \\\n~(,\\\n),\\\n~(,\\\n)\n"
