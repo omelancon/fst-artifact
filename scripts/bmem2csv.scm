@@ -213,7 +213,7 @@ set bmargin 3")
 	    (cdr compilers) (iota (-fx (length compilers) 1) 2))
 	 (let ((table (vector-ref *offset-tables* (length compilers))))
 	    (map (lambda (comp idx)
-		    (format "  '~a.csv' u ($0+~a):($~a*1.2):(sprintf(\"%3.2f\",$~a)) with labels font 'Verdana,6' rotate by 90 notitle"
+		    (format "  '~a.csv' u ($0+~a):(round(($~a+0.1)*10.0) / 10.0):(sprintf(\"%3.2f\",$~a)) with labels font 'Verdana,6' rotate by 90 notitle"
 		       output (vector-ref table (-fx idx 2)) idx idx))
 	       (cdr compilers) (iota (-fx (length compilers) 1) 2)))))
 
