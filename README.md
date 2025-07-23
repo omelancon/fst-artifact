@@ -2,13 +2,13 @@
 
 Name: Float Self-Tagging
 
-  * DOI: 10.5281/zenodo.15741204
-  * URL: https://zenodo.org/records/15741204
+  * DOI: 10.5281/zenodo.16356364
+  * URL: https://zenodo.org/records/16356364
   * GITHUB: git@github.com:omelancon/fst-artifact
 
 This artifact can be installed and run either:
 
-  1. using the VM available at https://zenodo.org/records/15741204
+  1. using the VM available at https://zenodo.org/records/16356364
   2. using a native installation from git@github.com:omelancon/fst-artifact
 
 ## Introduction
