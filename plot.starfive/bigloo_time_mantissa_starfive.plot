@@ -2,15 +2,16 @@ set output '/dev/null'
 set terminal dumb
 
 plot \
-   'bigloo_time_mantissa_starfive.csv' u 2:3:4:xtic(1) title 'alloc' ls 1, \
-   'bigloo_time_mantissa_starfive.csv' u ($0+0):($2+.15):(sprintf("%3.2f",$2)) with labels font 'Verdana,4' rotate by 90 notitle
+   'bigloo_time_mantissa_starfive.csv' u 2:3:4:xtic(1) title '' ls 1, \
+   'bigloo_time_mantissa_starfive.csv' u ($0+0):($4*1.1):(sprintf("%3.2f",$2)) with labels font 'Verdana,4' rotate by 90 notitle
 reset
 
 set output 'bigloo_time_mantissa_starfive.pdf'
-set terminal pdf font "Verdana,12" size 6,2
+set terminal pdf font "Verdana,12" size 8,2
 
 set title ''
 set ylabel "relative time" offset 0,0
+set tmargin 0.2
 
 set auto x
 
@@ -41,7 +42,7 @@ set grid ytics
 set xtics scale 0
 set datafile separator ","
 
-set yrange [0.125:2.5]
+set yrange [0.15:2.99]
 
 set lmargin 6
 set rmargin 1
@@ -50,12 +51,12 @@ set bmargin 2.5
 set key off
 
 set arrow 1 from graph 0, first 1 to graph 1, first 1 nohead lc 'red' lw 2 dt '---' front
-set label 1 'alloc' font 'Verdana,10' at -1,1 offset 0.1,0.4 left tc 'red' front
+set label 1 '' font 'Verdana,10' at -1,1 offset 0.1,0.4 left tc 'red' front
 
 set logscale y
 
-set arrow from 11.5,GPVAL_Y_MIN to 11.5,GPVAL_Y_MAX nohead ls 1000 dashtype 2
+set arrow from 11.5,graph 0 to 11.5,graph 1 nohead ls 1000 dashtype 2
 
 plot \
-   'bigloo_time_mantissa_starfive.csv' u 2:3:4:xtic(1) title 'alloc' ls 1, \
-   'bigloo_time_mantissa_starfive.csv' u ($0+0):($2+.15):(sprintf("%3.2f",$2)) with labels font 'Verdana,4' rotate by 90 notitle
+   'bigloo_time_mantissa_starfive.csv' u 2:3:4:xtic(1) title '' ls 1, \
+   'bigloo_time_mantissa_starfive.csv' u ($0+0):($4*1.1):(sprintf("%3.2f",$2)) with labels font 'Verdana,4' rotate by 90 notitle

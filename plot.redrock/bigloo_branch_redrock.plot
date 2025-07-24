@@ -10,11 +10,11 @@ plot \
   'bigloo_branch_redrock.csv' u 4:xtic(1) title 'Scheme self tagging (2 tags)' ls 4,\
   'bigloo_branch_redrock.csv' u 5:xtic(1) title 'Scheme nan tagging' ls 5,\
   'bigloo_branch_redrock.csv' u 6:xtic(1) title '_nun' ls 6,\
-  'bigloo_branch_redrock.csv' u ($0+-0.3333333333333333):($2*1.6):(sprintf("%3.2f",$2)) with labels font 'Verdana,6' rotate by 90 notitle,\
-  'bigloo_branch_redrock.csv' u ($0+-0.16666666666666666):($3*1.6):(sprintf("%3.2f",$3)) with labels font 'Verdana,6' rotate by 90 notitle,\
-  'bigloo_branch_redrock.csv' u ($0+0):($4*1.6):(sprintf("%3.2f",$4)) with labels font 'Verdana,6' rotate by 90 notitle,\
-  'bigloo_branch_redrock.csv' u ($0+0.16666666666666666):($5*1.6):(sprintf("%3.2f",$5)) with labels font 'Verdana,6' rotate by 90 notitle,\
-  'bigloo_branch_redrock.csv' u ($0+0.3333333333333333):($6*1.6):(sprintf("%3.2f",$6)) with labels font 'Verdana,6' rotate by 90 notitle
+  'bigloo_branch_redrock.csv' u ($0+-0.3333333333333333):($2*2.0):(sprintf("%3.2f",$2)) with labels font 'Verdana,6' rotate by 90 notitle,\
+  'bigloo_branch_redrock.csv' u ($0+-0.16666666666666666):($3*2.0):(sprintf("%3.2f",$3)) with labels font 'Verdana,6' rotate by 90 notitle,\
+  'bigloo_branch_redrock.csv' u ($0+0):($4*2.0):(sprintf("%3.2f",$4)) with labels font 'Verdana,6' rotate by 90 notitle,\
+  'bigloo_branch_redrock.csv' u ($0+0.16666666666666666):($5*2.0):(sprintf("%3.2f",$5)) with labels font 'Verdana,6' rotate by 90 notitle,\
+  'bigloo_branch_redrock.csv' u ($0+0.3333333333333333):($6*2.0):(sprintf("%3.2f",$6)) with labels font 'Verdana,6' rotate by 90 notitle
 
 reset
 
@@ -66,7 +66,7 @@ set key off
 set arrow 1 from graph 0, first 1 to graph 1, first 1 nohead lc 'red' lw 2 dt '---' front
 set label 1 '' font 'Verdana,10' at 20,1 offset -0.5,0.5 tc 'red'
 
-set arrow from 11.5,0.001 to 11.5,100 nohead ls 1000 dashtype 2 front
+set arrow from 11.5,graph 0 to 11.5,graph 1 nohead ls 1000 dashtype 2 front
 
 plot \
   'bigloo_branch_redrock.csv' u 2:xtic(1) title 'Scheme self tagging (2 tags, mantissa low-bits)' ls 2,\
@@ -74,8 +74,8 @@ plot \
   'bigloo_branch_redrock.csv' u 4:xtic(1) title 'Scheme self tagging (2 tags)' ls 4,\
   'bigloo_branch_redrock.csv' u 5:xtic(1) title 'Scheme nan tagging' ls 5,\
   'bigloo_branch_redrock.csv' u 6:xtic(1) title '_nun' ls 6,\
-  'bigloo_branch_redrock.csv' u ($0+-0.3333333333333333):($2*1.6):(sprintf("%3.2f",$2)) with labels font 'Verdana,6' rotate by 90 notitle,\
-  'bigloo_branch_redrock.csv' u ($0+-0.16666666666666666):($3*1.6):(sprintf("%3.2f",$3)) with labels font 'Verdana,6' rotate by 90 notitle,\
-  'bigloo_branch_redrock.csv' u ($0+0):($4*1.6):(sprintf("%3.2f",$4)) with labels font 'Verdana,6' rotate by 90 notitle,\
-  'bigloo_branch_redrock.csv' u ($0+0.16666666666666666):($5*1.6):(sprintf("%3.2f",$5)) with labels font 'Verdana,6' rotate by 90 notitle,\
-  'bigloo_branch_redrock.csv' u ($0+0.3333333333333333):($6*1.6):(sprintf("%3.2f",$6)) with labels font 'Verdana,6' rotate by 90 notitle
+  'bigloo_branch_redrock.csv' u ($0+-0.3333333333333333):($2*2.0):(sprintf("%3.2f",$2)) with labels font 'Verdana,6' rotate by 90 notitle,\
+  'bigloo_branch_redrock.csv' u ($0+-0.16666666666666666):($3*2.0):(sprintf("%3.2f",$3)) with labels font 'Verdana,6' rotate by 90 notitle,\
+  'bigloo_branch_redrock.csv' u ($0+0):($4*2.0):(sprintf("%3.2f",$4)) with labels font 'Verdana,6' rotate by 90 notitle,\
+  'bigloo_branch_redrock.csv' u ($0+0.16666666666666666):($5*2.0):(sprintf("%3.2f",$5)) with labels font 'Verdana,6' rotate by 90 notitle,\
+  'bigloo_branch_redrock.csv' u ($0+0.3333333333333333):($6*2.0):(sprintf("%3.2f",$6)) with labels font 'Verdana,6' rotate by 90 notitle
