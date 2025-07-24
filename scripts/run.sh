@@ -4,7 +4,7 @@
 #*    -------------------------------------------------------------    */
 #*    Author      :  Manuel Serrano                                    */
 #*    Creation    :  Thu Oct  3 09:44:21 2024                          */
-#*    Last change :  Fri Jun 27 15:58:23 2025 (serrano)                */
+#*    Last change :  Wed Jul 23 08:02:10 2025 (serrano)                */
 #*    Copyright   :  2024-25 Manuel Serrano                            */
 #*    -------------------------------------------------------------    */
 #*    Run all the FLT benchmarks                                       */
@@ -219,8 +219,3 @@ done
 #   (cd $downloaddir/$jsbench \
 #      && ./hopstone.sh --hopc=$FST_ARTIFACT_ROOT/install/hop/bin/hopc --hop=$FST_ARTIFACT_ROOT/install/hop/bin/hop --dir=$LOGS -e hop -e hop_flt -e hop_nan -e hop_nun -e hop_fltlb -e hop_fltnz -e hop_flt1 octane jetstream sunspider bglstone)
 # fi
-  
-#*---------------------------------------------------------------------*/
-#*    last message                                                     */
-#*---------------------------------------------------------------------*/
-echo "\e[1;29m*** $PLOTDIR\e[0m complete."
