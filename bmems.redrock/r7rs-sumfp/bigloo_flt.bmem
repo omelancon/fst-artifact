@@ -1,26 +1,27 @@
 (monitor (info (exec "./a.out") (version "0.0.4") (sizeof-word 1))
   (gc
-    (number: 0 alloc: #l101696 heap: #l4259840 live: #l123696 lastfun: "unknown" time: #l1742823233859384000)
+    (number: 0 alloc: #l105077 heap: #l4259840 live: #l126272 lastfun: "unknown" time: #l1752829387971702000)
    )
   (alloc 
-    (kbsize 99)
+    (kbsize 102)
     (gc-count 1)
     (files
       (file: "/misc/serrano/flt-artifact/download/bglstone_flt/src/r7rs-sumfp/bigloo/r7rs-sumfp.c"
-       lines: ((line: 224 kbsize: 45 %: 0 count: 1138 types: #("string" "mutex" "?" "pair" "class" "vector" "keyword" "symbol"))))
+       lines: ((line: 289 kbsize: 48 %: 0 count: 1287 types: #("string" "mutex" "bignum" "?" "pair" "class" "vector" "keyword" "symbol"))))
       (file: "lib/init.c"
        lines: ((line: 574 kbsize: 47 %: 0 count: 64 types: #("vector" "keyword" "input-port" "output-port" "string" "mutex"))))
        )
    )
   (types
-    (count 1293)
+    (count 1456)
     (types
-      (vector (kbsize: 53 %: 54.0434 cnt: 270))
-      (string (kbsize: 20 %: 20.9821 cnt: 480))
-      (symbol (kbsize: 8 %: 8.70831 cnt: 369))
-      (class (kbsize: 6 %: 6.88326 cnt: 37))
-      (? (kbsize: 2 %: 2.48387 cnt: 43))
-      (mutex (kbsize: 1 %: 1.49465 cnt: 19))
-      (keyword (kbsize: 1 %: 1.46318 cnt: 62))
+      (vector (kbsize: 53 %: 52.5634 cnt: 271))
+      (string (kbsize: 21 %: 20.9684 cnt: 516))
+      (symbol (kbsize: 8 %: 8.45095 cnt: 370))
+      (class (kbsize: 6 %: 6.66178 cnt: 37))
+      (? (kbsize: 4 %: 4.38536 cnt: 151))
+      (mutex (kbsize: 1 %: 1.44656 cnt: 19))
+      (keyword (kbsize: 1 %: 1.4161 cnt: 62))
+      (bignum (kbsize: 0 %: 0.277891 cnt: 16))
    ))
 )

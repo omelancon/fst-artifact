@@ -9,7 +9,7 @@ GAMBIT_CONFIGURE_OPTIONS="--enable-single-host --enable-march=native --enable-dy
 
 # download
 if [ "$action " = "download " -o "$action " = "all " ]; then
-  download_git || exit 1
+  download_git_with_clone || exit 1
 fi
 
 # software package install

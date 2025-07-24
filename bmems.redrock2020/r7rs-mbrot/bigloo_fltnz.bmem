@@ -1,23 +1,24 @@
 (monitor (info (exec "./a.out") (version "0.0.4") (sizeof-word 1))
   (gc
-    (number: 0 alloc: #l3698437 heap: #l4259840 live: #l167504 lastfun: "unknown" time: #l1750433872103418000)
-    (number: 1 alloc: #l1025104 heap: #l4259840 live: #l176240 lastfun: "unknown" time: #l1750433872225410000)
+    (number: 0 alloc: #l3690786 heap: #l4259840 live: #l157632 lastfun: "unknown" time: #l1752876645342327000)
+    (number: 1 alloc: #l1036048 heap: #l4259840 live: #l178464 lastfun: "unknown" time: #l1752876645472836000)
    )
   (alloc 
-    (kbsize 4612)
+    (kbsize 4616)
     (gc-count 2)
     (files
       (file: "lib/init.c"
        lines: ((line: 574 kbsize: 47 %: 0 count: 64 types: #("vector" "keyword" "input-port" "output-port" "string" "mutex"))))
       (file: "/misc/serrano/flt-artifact/download/bglstone_fltnz/src/r7rs-mbrot/bigloo/r7rs-mbrot.c"
-       lines: ((line: 2021 kbsize: 4453 %: 0 count: 7500 types: #("vector"))          (line: 1947 kbsize: 59 %: 0 count: 100 types: #("vector"))          (line: 253 kbsize: 45 %: 0 count: 1132 types: #("string" "mutex" "?" "pair" "class" "vector" "keyword" "symbol"))))
+       lines: ((line: 2115 kbsize: 4453 %: 0 count: 7500 types: #("vector"))          (line: 2041 kbsize: 59 %: 0 count: 100 types: #("vector"))          (line: 300 kbsize: 48 %: 0 count: 1287 types: #("string" "mutex" "bignum" "?" "pair" "class" "vector" "keyword" "symbol"))))
        )
    )
   (types
-    (count 8917)
+    (count 9086)
     (types
-      (vector (kbsize: 4566 %: 98.9884 cnt: 7870))
-      (string (kbsize: 21 %: 0.456141 cnt: 489))
-      (symbol (kbsize: 8 %: 0.187486 cnt: 369))
+      (vector (kbsize: 4566 %: 98.9252 cnt: 7871))
+      (string (kbsize: 21 %: 0.469892 cnt: 527))
+      (symbol (kbsize: 8 %: 0.187864 cnt: 370))
+      (? (kbsize: 5 %: 0.112866 cnt: 167))
    ))
 )

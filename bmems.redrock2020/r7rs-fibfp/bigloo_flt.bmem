@@ -1,26 +1,27 @@
 (monitor (info (exec "./a.out") (version "0.0.4") (sizeof-word 1))
   (gc
-    (number: 0 alloc: #l101856 heap: #l4259840 live: #l123856 lastfun: "unknown" time: #l1750432926190737000)
+    (number: 0 alloc: #l104885 heap: #l4259840 live: #l126080 lastfun: "unknown" time: #l1752875242420871000)
    )
   (alloc 
-    (kbsize 99)
+    (kbsize 102)
     (gc-count 1)
     (files
       (file: "lib/init.c"
        lines: ((line: 574 kbsize: 47 %: 0 count: 64 types: #("vector" "keyword" "input-port" "output-port" "string" "mutex"))))
       (file: "/misc/serrano/flt-artifact/download/bglstone_flt/src/r7rs-fibfp/bigloo/r7rs-fibfp.c"
-       lines: ((line: 241 kbsize: 45 %: 0 count: 1132 types: #("string" "mutex" "?" "pair" "class" "vector" "keyword" "symbol"))))
+       lines: ((line: 287 kbsize: 48 %: 0 count: 1287 types: #("string" "mutex" "bignum" "?" "pair" "class" "vector" "keyword" "symbol"))))
        )
    )
   (types
-    (count 1301)
+    (count 1454)
     (types
-      (vector (kbsize: 53 %: 53.9585 cnt: 270))
-      (string (kbsize: 20 %: 21.015 cnt: 484))
-      (symbol (kbsize: 8 %: 8.69463 cnt: 369))
-      (class (kbsize: 6 %: 6.87245 cnt: 37))
-      (? (kbsize: 2 %: 2.57128 cnt: 47))
-      (mutex (kbsize: 1 %: 1.4923 cnt: 19))
-      (keyword (kbsize: 1 %: 1.46089 cnt: 62))
+      (vector (kbsize: 53 %: 52.6596 cnt: 271))
+      (string (kbsize: 21 %: 20.9448 cnt: 516))
+      (symbol (kbsize: 8 %: 8.46642 cnt: 370))
+      (class (kbsize: 6 %: 6.67398 cnt: 37))
+      (? (kbsize: 4 %: 4.28755 cnt: 150))
+      (mutex (kbsize: 1 %: 1.44921 cnt: 19))
+      (keyword (kbsize: 1 %: 1.4187 cnt: 62))
+      (bignum (kbsize: 0 %: 0.2784 cnt: 16))
    ))
 )

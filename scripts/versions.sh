@@ -4,7 +4,7 @@
 #*    -------------------------------------------------------------    */
 #*    Author      :  Manuel Serrano                                    */
 #*    Creation    :  Thu Oct  3 09:53:13 2024                          */
-#*    Last change :  Fri Jun 27 17:44:33 2025 (serrano)                */
+#*    Last change :  Tue Jul 15 14:48:36 2025 (serrano)                */
 #*    Copyright   :  2024-25 Manuel Serrano                            */
 #*    -------------------------------------------------------------    */
 #*    Package versions                                                 */
@@ -12,7 +12,7 @@
 
 # bigloo
 bigloo_giturl=https://github.com/manuel-serrano/bigloo
-bigloo_commit=688e83cd951060c36d9585394f381689fc2fa14d
+bigloo_commit=5b1118c6dee98525743278a5fe684b0bad7b73cd
 bigloo_branch=master
 bigloo_configure_opts="--disable-gmp --disable-libunistring --disable-pcre2 --disable-pcre --disable-libuv"
 
@@ -87,7 +87,7 @@ hop_nun_branch=$hop_branch
 
 # bglstone
 bglstone_giturl=https://github.com/manuel-serrano/bglstone
-bglstone_commit=36ef97cfcc440c12f780e36a2da005ffddd29f7c
+bglstone_commit=75cf380279bfc4c63b6607d1eee6b706d5501d7d
 bglstone_branch=master
 
 bglstone_bflags="-O6 -freturn -freturn-goto -copt -O3 -static-all-bigloo"
@@ -131,7 +131,7 @@ jsbench_branch=master
 
 # gambit
 gambit_giturl=https://github.com/gambit/gambit
-gambit_commit=f251835e2a1226b1ed70d6f343d41beb8cff2e0b
+gambit_commit=768900f31794aadb09230d4bbe5f23869d58912d
 gambit_branch=master
 
 gambit_0_giturl=$gambit_giturl

@@ -1,28 +1,28 @@
 (monitor (info (exec "./a.out") (version "0.0.4") (sizeof-word 1))
   (gc
-    (number: 0 alloc: #l939492 heap: #l4259840 live: #l124464 lastfun: "unknown" time: #l1750434423760564000)
+    (number: 0 alloc: #l942512 heap: #l4259840 live: #l126672 lastfun: "unknown" time: #l1753091028941581000)
    )
   (alloc 
-    (kbsize 917)
+    (kbsize 920)
     (gc-count 1)
     (files
       (file: "/misc/serrano/flt-artifact/download/bglstone_nan/src/r7rs-sum1/bigloo/r7rs-sum1.c"
-       lines: ((line: 1339 kbsize: 822 %: 0 count: 300 types: #("string" "procedure" "input-port"))          (line: 261 kbsize: 40 %: 0 count: 1132 types: #("string" "mutex" "?" "pair" "class" "vector" "keyword" "symbol"))))
+       lines: ((line: 1439 kbsize: 822 %: 0 count: 300 types: #("string" "procedure" "input-port"))          (line: 314 kbsize: 43 %: 0 count: 1287 types: #("string" "mutex" "bignum" "?" "pair" "class" "vector" "keyword" "symbol"))))
       (file: "lib/init.c"
        lines: ((line: 574 kbsize: 47 %: 0 count: 64 types: #("vector" "keyword" "input-port" "output-port" "string" "mutex"))))
        )
    )
   (types
-    (count 1611)
+    (count 1764)
     (types
-      (string (kbsize: 822 %: 89.6509 cnt: 585))
-      (vector (kbsize: 51 %: 5.63198 cnt: 270))
-      (input-port (kbsize: 16 %: 1.84355 cnt: 103))
-      (class (kbsize: 6 %: 0.745084 cnt: 37))
-      (symbol (kbsize: 5 %: 0.628425 cnt: 369))
-      (procedure (kbsize: 4 %: 0.517727 cnt: 101))
-      (? (kbsize: 2 %: 0.304526 cnt: 55))
-      (mutex (kbsize: 1 %: 0.16179 cnt: 19))
-      (keyword (kbsize: 1 %: 0.158383 cnt: 62))
+      (string (kbsize: 823 %: 89.4234 cnt: 617))
+      (vector (kbsize: 51 %: 5.64279 cnt: 271))
+      (input-port (kbsize: 16 %: 1.83764 cnt: 103))
+      (class (kbsize: 6 %: 0.742696 cnt: 37))
+      (symbol (kbsize: 5 %: 0.628109 cnt: 370))
+      (procedure (kbsize: 4 %: 0.516068 cnt: 101))
+      (? (kbsize: 4 %: 0.502699 cnt: 158))
+      (mutex (kbsize: 1 %: 0.161271 cnt: 19))
+      (keyword (kbsize: 1 %: 0.157876 cnt: 62))
    ))
 )

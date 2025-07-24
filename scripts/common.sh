@@ -133,6 +133,25 @@ download_git() {
   fi
 }
 
+download_git_with_clone() {
+  if [ -d $downloaddir ]; then
+    if [ "$force " = "true " ]; then
+      rm -rf $downloaddir
+    else
+      cur_commit=`(cd $downloaddir; git rev-parse HEAD 2> /dev/null)`
+
+      if [ "$cur_commit " != "$commit " ]; then
+	rm -rf $downloaddir
+      fi
+    fi
+  fi
+
+  if [ ! -d $downloaddir ]; then
+    print "   \e[1;${color}mgit\e[0m clone -b $branch $giturl [$commit]"
+    git clone -b $branch $giturl $downloaddir > $log 2>&1 && (cd $downloaddir; git checkout $commit >> $log 2>&1) || (tail -n 10 $log; exit 3)
+  fi
+}
+
 configure() {
   print "   \e[1;${color}mconfigure\e[0m $@"
   (cd $downloaddir && ./configure "$@" >> $log 2>&1) || (tail -n 10 $log; exit 4)

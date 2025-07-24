@@ -1,28 +1,28 @@
 (monitor (info (exec "./a.out") (version "0.0.4") (sizeof-word 1))
   (gc
-    (number: 0 alloc: #l944465 heap: #l4259840 live: #l124256 lastfun: "unknown" time: #l1742824494191467000)
+    (number: 0 alloc: #l947828 heap: #l4259840 live: #l126832 lastfun: "unknown" time: #l1752830405626938000)
    )
   (alloc 
-    (kbsize 922)
+    (kbsize 925)
     (gc-count 1)
     (files
       (file: "/misc/serrano/flt-artifact/download/bglstone_flt1/src/r7rs-sum1/bigloo/r7rs-sum1.c"
-       lines: ((line: 1043 kbsize: 822 %: 0 count: 300 types: #("string" "procedure" "input-port"))          (line: 238 kbsize: 45 %: 0 count: 1138 types: #("string" "mutex" "?" "pair" "class" "vector" "keyword" "symbol"))))
+       lines: ((line: 1431 kbsize: 822 %: 0 count: 301 types: #("string" "pair" "procedure" "input-port"))          (line: 306 kbsize: 48 %: 0 count: 1287 types: #("string" "mutex" "bignum" "?" "pair" "class" "vector" "keyword" "symbol"))))
       (file: "lib/init.c"
        lines: ((line: 574 kbsize: 47 %: 0 count: 64 types: #("vector" "keyword" "input-port" "output-port" "string" "mutex"))))
        )
    )
   (types
-    (count 1602)
+    (count 1764)
     (types
-      (string (kbsize: 822 %: 89.166 cnt: 581))
-      (vector (kbsize: 53 %: 5.81917 cnt: 270))
-      (input-port (kbsize: 16 %: 1.83384 cnt: 103))
-      (symbol (kbsize: 8 %: 0.937674 cnt: 369))
-      (class (kbsize: 6 %: 0.74116 cnt: 37))
-      (procedure (kbsize: 4 %: 0.515001 cnt: 101))
-      (? (kbsize: 2 %: 0.304405 cnt: 50))
-      (mutex (kbsize: 1 %: 0.160938 cnt: 19))
-      (keyword (kbsize: 1 %: 0.15755 cnt: 62))
+      (string (kbsize: 823 %: 88.9228 cnt: 617))
+      (vector (kbsize: 53 %: 5.82722 cnt: 271))
+      (input-port (kbsize: 16 %: 1.82734 cnt: 103))
+      (symbol (kbsize: 8 %: 0.936879 cnt: 370))
+      (class (kbsize: 6 %: 0.738531 cnt: 37))
+      (? (kbsize: 4 %: 0.522985 cnt: 158))
+      (procedure (kbsize: 4 %: 0.513173 cnt: 101))
+      (mutex (kbsize: 1 %: 0.160367 cnt: 19))
+      (keyword (kbsize: 1 %: 0.156991 cnt: 62))
    ))
 )

@@ -1,12 +1,25 @@
 ### plot_param.gp ###
 
-# Require bigloo_orig, bigloo_fst, gambit_orig, gambit_fst, output, benchmark
+# Required: 
+#  -bigloo_orig
+#  -bigloo_orig_color
+#  -bigloo_orig_name
+#  -bigloo_fst
+#  -bigloo_fst_color
+#  -bigloo_fst_name
+#  -gambit_orig
+#  -gambit_orig_color
+#  -gambit_orig_name
+#  -gambit_fst
+#  -gambit_fst_color
+#  -gambit_fst_name
+#  -output
+#  -benchmark
 
 set output output
 
 if (exists("legend_only")) {
-    #set terminal pngcairo size 1200, 400
-    set terminal pdf font 'Verdana,28' size 8,1
+    set terminal pdf font 'Verdana,28' size 12.5,1.1
     set xrange [0:1]
     set yrange [0:1]
 
@@ -14,19 +27,20 @@ if (exists("legend_only")) {
     unset ytics
     unset border
 
-    set key bottom center
+    set key bottom
     set key spacing 1.5
-    set lmargin at screen 0.55
-    set rmargin at screen 1
-    set key below columns 3
-    set key width -10
+    set key below columns 2
+    set key width 0
     set key samplen 7
+    set key reverse
+    set key Left
+    set key left
 
     plot \
-        NaN with linespoints title "Bigloo (self-tagging)" linecolor "dark-blue" ps 2 lw 3 pointtype 9, \
-        NaN with linespoints title "Gambit (self-tagging)" linecolor "dark-red" ps 2 lw 3 pointtype 5, \
-        NaN with linespoints title "Bigloo (orig)" linecolor "dark-blue" dashtype (30,15,30,15) ps 2 lw 3 pointtype 8, \
-        NaN with linespoints title "Gambit (orig)" linecolor "dark-red" dashtype (30,15,30,15) ps 2 lw 3 pointtype 4, \
+        NaN with linespoints title bigloo_orig_name linecolor rgb bigloo_orig_color dashtype (30,15,30,15) ps 2 lw 3 pointtype 9, \
+        NaN with linespoints title bigloo_fst_name linecolor rgb bigloo_fst_color ps 2 lw 3 pointtype 9, \
+        NaN with linespoints title gambit_orig_name linecolor rgb gambit_orig_color dashtype (30,15,30,15) ps 2 lw 3 pointtype 4, \
+        NaN with linespoints title gambit_fst_name linecolor rgb gambit_fst_color ps 2 lw 3 pointtype 4
 
     exit 0
 }
@@ -110,9 +124,9 @@ set bmargin 7
 unset key
 
 plot \
-    bigloo_orig using (zx($1)):2 with linespoints title "Bigloo (orig)" linecolor "dark-blue" dashtype (50,30,50,30) ps 2 lw 2 pointtype 8, \
-    gambit_orig using (zx($1)):2 with linespoints title "Gambit (orig)" linecolor "dark-red" dashtype (50,30,50,30) ps 2 lw 2 pointtype 4, \
-    gambit_fst  using (zx($1)):2 with linespoints title "Gambit (self-tagging)" linecolor "dark-red" ps 2 lw 3 pointtype 5, \
-    bigloo_fst  using (zx($1)):2 with linespoints title "Bigloo (self-tagging)" linecolor "dark-blue" ps 2 lw 3 pointtype 9
+    bigloo_orig using (zx($1)):2 with linespoints title bigloo_orig_name linecolor rgb bigloo_orig_color dashtype (50,30,50,30) ps 2 lw 2 pointtype 9, \
+    bigloo_fst  using (zx($1)):2 with linespoints title bigloo_fst_name linecolor rgb bigloo_fst_color ps 2 lw 3 pointtype 9, \
+    gambit_orig using (zx($1)):2 with linespoints title gambit_orig_name linecolor rgb gambit_orig_color dashtype (50,30,50,30) ps 2 lw 2 pointtype 4, \
+    gambit_fst  using (zx($1)):2 with linespoints title gambit_fst_name linecolor rgb gambit_fst_color ps 2 lw 3 pointtype 4
 
 exit 0

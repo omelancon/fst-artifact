@@ -1,21 +1,27 @@
 (monitor (info (exec "./a.out") (version "0.0.4") (sizeof-word 1))
   (gc
-    (number: 0 alloc: #l3349880 heap: #l4259840 live: #l143520 lastfun: "unknown" time: #l1742824211121583000)
-    (number: 1 alloc: #l1748356 heap: #l4259840 live: #l134880 lastfun: "unknown" time: #l1742824211259982000)
+    (number: 0 alloc: #l1155075 heap: #l4259840 live: #l146336 lastfun: "unknown" time: #l1752830221098516000)
+    (number: 1 alloc: #l1039768 heap: #l4259840 live: #l146336 lastfun: "unknown" time: #l1752830221155316000)
+    (number: 2 alloc: #l1039776 heap: #l4259840 live: #l146336 lastfun: "unknown" time: #l1752830221212098000)
+    (number: 3 alloc: #l1040672 heap: #l4259840 live: #l146336 lastfun: "unknown" time: #l1752830221269006000)
+    (number: 4 alloc: #l1041328 heap: #l4259840 live: #l146368 lastfun: "unknown" time: #l1752830221325825000)
+    (number: 5 alloc: #l105596 heap: #l4259840 live: #l137728 lastfun: "unknown" time: #l1752830221333095000)
    )
   (alloc 
-    (kbsize 4978)
-    (gc-count 2)
+    (kbsize 5295)
+    (gc-count 6)
     (files
       (file: "/misc/serrano/flt-artifact/download/bglstone_fltnz/src/r7rs-ray/bigloo/r7rs-ray.c"
-       lines: ((line: 1240 kbsize: 3651 %: 0 count: 116861 types: #("vector"))          (line: 2757 kbsize: 1171 %: 0 count: 50000 types: #("vector"))          (line: 307 kbsize: 45 %: 0 count: 1138 types: #("string" "mutex" "?" "pair" "class" "vector" "keyword" "symbol"))          (line: 2031 kbsize: 41 %: 0 count: 20 types: #("string" "procedure" "mutex" "output-port"))))
+       lines: ((line: 1636 kbsize: 3651 %: 0 count: 116861 types: #("vector"))          (line: 3101 kbsize: 1171 %: 0 count: 50000 types: #("vector"))          (line: 4376 kbsize: 104 %: 0 count: 13334 types: #("real"))          (line: 3953 kbsize: 77 %: 0 count: 9962 types: #("real"))          (line: 3995 kbsize: 76 %: 0 count: 9849 types: #("real"))          (line: 2706 kbsize: 56 %: 0 count: 3588 types: #("pair"))          (line: 384 kbsize: 48 %: 0 count: 1287 types: #("string" "mutex" "bignum" "?" "pair" "class" "vector" "keyword" "symbol"))          (line: 2427 kbsize: 41 %: 0 count: 20 types: #("string" "procedure" "mutex" "output-port"))))
       (file: "lib/init.c"
        lines: ((line: 574 kbsize: 47 %: 0 count: 64 types: #("vector" "keyword" "input-port" "output-port" "string" "mutex"))))
        )
    )
   (types
-    (count 168653)
+    (count 205440)
     (types
-      (vector (kbsize: 4882 %: 98.0691 cnt: 167296))
+      (vector (kbsize: 4882 %: 92.2144 cnt: 167297))
+      (real (kbsize: 259 %: 4.89586 cnt: 33183))
+      (pair (kbsize: 56 %: 1.06053 cnt: 3594))
    ))
 )

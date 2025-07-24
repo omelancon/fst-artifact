@@ -18,6 +18,21 @@ dir=`dirname $path`
 
 . $dir/env.sh
 
+plot_only=false
+
+for arg in "$@"; do
+  if [ "$arg" = "--plot-only" ]; then
+    plot_only=true
+    break
+  fi
+done
+
+if $plot_only; then
+    $dir/bigloo.sh
+    $dir/bglstone.sh
+    exit 0
+fi
+
 # compilers
 $dir/bigloo.sh
 $dir/bigloo_flt.sh

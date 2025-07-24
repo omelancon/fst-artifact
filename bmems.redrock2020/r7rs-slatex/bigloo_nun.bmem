@@ -1,25 +1,25 @@
 (monitor (info (exec "./a.out") (version "0.0.4") (sizeof-word 1))
   (gc
-    (number: 0 alloc: #l144171 heap: #l4259840 live: #l184896 lastfun: "unknown" time: #l1750434683019828000)
+    (number: 0 alloc: #l147955 heap: #l4259840 live: #l187120 lastfun: "unknown" time: #l1752877564275407000)
    )
   (alloc 
-    (kbsize 140)
+    (kbsize 144)
     (gc-count 1)
     (files
       (file: "/misc/serrano/flt-artifact/download/bglstone_nun/src/r7rs-slatex/bigloo/r7rs-slatex.c"
-       lines: ((line: 997 kbsize: 43 %: 0 count: 1132 types: #("string" "mutex" "?" "pair" "class" "vector" "keyword" "symbol"))          (line: 1076 kbsize: 39 %: 0 count: 794 types: #("string" "pair" "?"))))
+       lines: ((line: 1255 kbsize: 46 %: 0 count: 1287 types: #("string" "mutex" "bignum" "?" "pair" "class" "vector" "keyword" "symbol"))          (line: 1336 kbsize: 40 %: 0 count: 840 types: #("string" "bignum" "pair" "?"))))
       (file: "lib/init.c"
        lines: ((line: 574 kbsize: 47 %: 0 count: 64 types: #("vector" "keyword" "input-port" "output-port" "string" "mutex"))))
        )
    )
   (types
-    (count 2252)
+    (count 2451)
     (types
-      (vector (kbsize: 51 %: 36.7674 cnt: 272))
-      (string (kbsize: 38 %: 27.312 cnt: 971))
-      (? (kbsize: 28 %: 19.9673 cnt: 503))
-      (symbol (kbsize: 8 %: 6.14271 cnt: 369))
-      (class (kbsize: 6 %: 4.85535 cnt: 37))
-      (keyword (kbsize: 1 %: 1.03211 cnt: 62))
+      (vector (kbsize: 52 %: 36.0109 cnt: 273))
+      (string (kbsize: 39 %: 27.2008 cnt: 1021))
+      (? (kbsize: 30 %: 20.9456 cnt: 627))
+      (symbol (kbsize: 8 %: 6.00182 cnt: 370))
+      (class (kbsize: 6 %: 4.73117 cnt: 37))
+      (keyword (kbsize: 1 %: 1.00571 cnt: 62))
    ))
 )

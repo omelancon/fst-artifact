@@ -1,0 +1,273 @@
+\documentclass{article}
+\usepackage[letterpaper, margin=1.25in]{geometry}
+\usepackage{pgffor}
+\usepackage{ifthen}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{xspace}
+\usepackage{hyperref}
+
+\newcommand{\colorrect}[2]{\raisebox{2pt}{\colorbox[HTML]{#2}{\rule{0.25cm}{0cm}}} \space {\footnotesize #1}}
+\newcommand{\colorrectRight}[2]{{\footnotesize #1} \space \raisebox{2pt}{\colorbox[HTML]{#2}{\rule{0.25cm}{0cm}}}}
+\input{plot.redrock/legend.tex}
+
+\newcommand\redrockspec{AMD Ryzen 7955WX, 62GB, Linux 6.12.31 x86\_64, Debian 10.13, gcc 14.2.0}
+\newcommand\redrockTTspec{Intel(R) Xeon(R) W-2245, 32GB, Linux 6.12.31 x86\_64, Debian 10.13, gcc 14.2.0}
+\newcommand\sizospec{Apple M2 Max, 64GB, macOS 15.4.1, gcc 14.3.0}
+\newcommand\starfivespec{riscv sifive, u74-mc, 8GB, Linux starfive 6.1.31-starfive riscv64, gcc 14.2.0}
+
+% UPDATE \machineslist TO ADD NEW MACHINE:
+% format: id/spec/hasmem/hasbranch/hasheap
+%  - id: name of the machine as returned by 'uname -n'
+%  - spec: specifications of the machine
+%  - hasmem: is a plot for memory profiling available? [true/false]
+%  - hasbranch: is a plot for branch prediction profiling available? [true/false]
+%  - hasheap: is a plot for the experiment with non-empty heap available? [true/false]
+\newcommand{\machineslist}{
+  redrock/\redrockspec/true/true/true,
+  redrock2020/\redrockTTspec/true/true/true,
+  sizo/\sizospec/false/false/true,
+  starfive/\starfivespec/false/false/false
+}
+
+\newcommand{\displayexperimentssummary}{
+    \begin{quote}
+    \footnotesize
+    \foreach \id/\spec/\hasmem/\hasbranch/\hasheap in \machineslist {
+        \textsc{\spec}\\
+        Has memory profiling: \textbf{\hasmem}\\
+        Has branch prediction profiling: \textbf{\hasbranch}\\
+        Has preloaded heap experiment: \textbf{\hasheap}\\[1em]
+    }
+    \end{quote}
+}
+
+\newcommand{\displayexperiments}{
+  \foreach \id/\spec/\hasmem/\hasbranch/\hasheap in \machineslist {
+    \subsection{\small\textsc{\spec}}
+    \label{section:\id}
+    \subsubsection{Execution Time Relative to NuN-Boxing}
+    \label{section:\id-time-nun}
+    \begin{figure}[!htb]
+    \center
+    {\textsc{\spec}}\\[1em]
+    {\large Execution Time Relative to NuN-Boxing}\\[0.5em]
+    \begin{subfigure}{0.98\linewidth}
+        \includegraphics[width=\linewidth]{plot.\id/bigloo_time_nun_\id.pdf}\\[-3.5em]
+        \legendbiglootimenun
+        \subcaption{Bigloo}
+    \end{subfigure}\\[2em]
+    \begin{subfigure}{0.98\linewidth}
+        \includegraphics[width=\linewidth]{plot.\id/gambit_time_nun_\id.pdf}\\[-2em]
+        \legendgambittimenun
+        \subcaption{Gambit}
+    \end{subfigure}
+    \caption{ Execution time of self-tagging variants and
+        NaN-boxing. The y-axis shows execution time
+        relative to NuN-boxing (dashed horizontal red line) on a logarithmic
+        scale. $1.00\times$ indicates no change, lower means faster, and higher
+        means slower execution than NuN-boxing. }
+    \end{figure}
+    \clearpage
+    \subsubsection{Execution Time Relative to Allocated Floats}
+    \label{section:\id-time-alloc}
+    \begin{figure}[!htb]
+    \center
+    {\textsc{\spec}}\\[1em]
+    {\large Execution Time Relative to Allocated Floats}\\[0.5em]
+    \begin{subfigure}{0.98\linewidth}
+        \includegraphics[width=\linewidth]{plot.\id/bigloo_time_alloc_\id.pdf}\\[-2.5em]
+        \legendbiglootimealloc
+        \subcaption{Bigloo}
+    \end{subfigure}\\[2em]
+    \begin{subfigure}{0.98\linewidth}
+        \includegraphics[width=\linewidth]{plot.\id/gambit_time_alloc_\id.pdf}\\[-2em]
+        \legendgambittimealloc
+        \subcaption{Gambit}
+    \end{subfigure}
+      \caption{ Execution time relative to allocated floats. The y-axis shows
+        execution time relative to the version that uses tagged pointers for all
+        floats (dashed horizontal red line) on a logarithmic scale. $1.00\times$
+        indicates no change, lower means faster execution than allocated floats.}
+    \end{figure}
+
+    \ifthenelse{\equal{\hasheap}{true}}{
+    \clearpage
+    \subsubsection{Execution Time With Non-Empty Heap}
+    \label{section:\id-time-heap}
+    \begin{figure}[!htb]
+        \center
+        {\large\textsc{\spec}}\\[1em]
+        {\large Execution Time with Non-Empty Heap}\\[0.5em]
+        \parbox{0.04\textwidth}{
+            \centering
+            \raisebox{6em}{\rotatebox{90}{\text{{\large Execution time (s)}}}}
+        }%
+        \parbox{0.94\textwidth}{
+        \centering
+        \begin{subfigure}{0.3\columnwidth}
+            \centering
+            \texttt{fft}
+            \includegraphics[width=\columnwidth]{plot.\id/gc/r7rs-fft.pdf}
+        \end{subfigure}
+        \begin{subfigure}{0.3\columnwidth}
+            \centering
+            \texttt{fibfp}
+            \includegraphics[width=\columnwidth]{plot.\id/gc/r7rs-fibfp.pdf}
+        \end{subfigure}
+        \begin{subfigure}{0.3\columnwidth}
+            \centering
+            \texttt{mbrot}
+            \includegraphics[width=\columnwidth]{plot.\id/gc/r7rs-mbrot.pdf}
+        \end{subfigure}
+        \\[0.5em]
+        \begin{subfigure}{0.3\columnwidth}
+            \centering
+            \texttt{nucleic}
+            \includegraphics[width=\columnwidth]{plot.\id/gc/r7rs-nucleic.pdf}
+        \end{subfigure}
+        \begin{subfigure}{0.3\columnwidth}
+            \centering
+            \texttt{pnpoly}
+            \includegraphics[width=\columnwidth]{plot.\id/gc/r7rs-pnpoly.pdf}
+        \end{subfigure}
+        \begin{subfigure}{0.3\columnwidth}
+            \centering
+            \texttt{ray}
+            \includegraphics[width=\columnwidth]{plot.\id/gc/r7rs-ray.pdf}
+        \end{subfigure}
+        \\[0.5em]
+        \begin{subfigure}{0.3\columnwidth}
+            \centering
+            \texttt{simplex}
+            \includegraphics[width=\columnwidth]{plot.\id/gc/r7rs-simplex.pdf}
+        \end{subfigure}
+        \begin{subfigure}{0.3\columnwidth}
+            \centering
+            \texttt{sum1}
+            \includegraphics[width=\columnwidth]{plot.\id/gc/r7rs-sum1.pdf}
+        \end{subfigure}
+        \begin{subfigure}{0.3\columnwidth}
+            \centering
+            \texttt{sumfp}
+            \includegraphics[width=\columnwidth]{plot.\id/gc/r7rs-sumfp.pdf}
+        \end{subfigure}
+        \\[-0.2em]
+        \text{{\large Preallocated heap data size (bytes)}}
+        \\[0.3em]
+        \begin{subfigure}{0.8\columnwidth}
+            \includegraphics[width=\columnwidth]{plot.\id/gc/legend.pdf}
+        \end{subfigure}
+        } \caption{ Execution time of float benchmarks with extra data allocated
+        on heap before execution with Bigloo and Gambit. The x-axis shows the
+        size of preallocated data in bytes on a logarithmic scale. The y-axis
+        represents execution time in seconds. Execution time without
+        preallocated data is added at $x=0$. Dashed lines correspond to times
+        with allocated floats. Solid lines are with self-tagging. }
+    \end{figure}
+    }{}
+
+    \ifthenelse{\equal{\hasmem}{true}}{
+      \clearpage
+      \subsubsection{Memory Profiling}
+      \label{section:\id-mem}
+      \begin{figure}[!htb]
+        \center
+        {\textsc{\spec}}\\[1em]
+        {\large Heap Allocations Relative to Allocated Floats (Bigloo)}\\[0.5em]
+        \includegraphics[width=\linewidth]{plot.\id/bigloo_mem_\id.pdf}\\[-2.5em]
+        \legendbigloomem
+        \caption{ Heap allocations of Bigloo with each variant of self-tagging,
+        NaN-boxing, NuN-boxing, and allocated floats. The y-axis shows the number of
+        allocated bytes relative to the version that uses tagged pointers for all
+        floats (dashed horizontal red line). $1.00\times$ indicates no change, while
+        $0.00\times$ indicates no heap allocation.}
+    \end{figure}
+    }{}
+    \ifthenelse{\equal{\hasbranch}{true}}{
+      \clearpage
+      \subsubsection{Branch Misprediction}
+      \label{section:\id-branch}
+      \begin{figure}[!htb]
+        \center
+        {\textsc{\spec}}\\[1em]
+        {\large Branch Misprediction of Self-Tagging with Low Bits (Bigloo)}\\[0.5em]
+        \includegraphics[width=\linewidth]{plot.\id/bigloo_branch_\id.pdf}
+        \legendbigloobranch
+        \caption{ Branch mispredictions of Bigloo with each variant of
+            self-tagging, NaN-boxing, and NuN-boxing relative to allocated
+            floats. The y-axis shows branch mispredictions relative to allocated
+            floats (dashed horizontal red line) on a logarithmic scale.
+            $1.00\times$ indicates no change, lower means less, and higher means
+            more mispredictions. }
+        \end{figure}
+    }{}
+
+    \clearpage
+    \subsubsection{Execution Time of Self-Tagging with Mantissa Low Bits}
+    \label{section:\id-mantissa}
+    \begin{figure}[!htb]
+        \center
+        {\textsc{\spec}}\\[1em]
+        {\large Execution Time of Self-Tagging with Low Bits (Bigloo)}\\[0.5em]
+        \includegraphics[width=\linewidth]{plot.\id/bigloo_time_mantissa_\id.pdf}
+        \legendbiglootimemantissa
+        \caption{ Execution time of Bigloo with self-tagging using the mantissa
+            low bits relative to allocated floats. The y-axis shows execution
+            time relative to the version that uses tagged pointers for all
+            floats (dashed horizontal red line) on a logarithmic scale.
+            $1.00\times$ indicates no change, lower means faster, and higher
+            means slower execution than allocated floats. }
+    \end{figure}
+    \clearpage
+  }
+}
+
+\title{Summary of Float Self-Tagging Artifact Results}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\clearpage
+
+\section{Overview}
+
+This document summarizes all results from the Float Self-Tagging artifact. It
+includes figures that were omitted in the Float Self-Tagging paper to avoid
+redundancy and save space.
+
+Some experiments were not executed on some machines, either because the proper
+tooling does not exists (such as branch prediction on an Apple M2) or because
+the experiment takes too long to run (such as the heap experiment on RISC-V,
+which would take several weeks).
+
+\subsection{Adding a Machine to this Document}
+
+To include results from a new machine in this summary:
+
+\begin{enumerate}[leftmargin=4em]
+    \item generate figures with \texttt{scripts/plot.sh}.\footnote{to generate
+    plots for another machine use \texttt{FST\_HOST=[name] scripts/plot.sh},
+    where \texttt{[name]} is the output of \texttt{uname -n} on the target machine.}
+    \item update the \texttt{\textbackslash machineslist} macro in \texttt{summary.tex}.
+    \item regenerate this pdf from \texttt{summary.tex}.
+\end{enumerate}
+
+This document was generated for the following machines:
+
+\displayexperimentssummary
+
+\clearpage
+
+\section{Results}
+
+\displayexperiments
+
+\end{document}

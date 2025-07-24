@@ -54,7 +54,7 @@ plot() {
   stats=$*
 
   if [ ! -f $pdf ] || [ $pdf -ot $plot.plot ]; then
-    $ROOT/download/bglstone/bin/gnuplothistogram -o $dir/$plot --size $size --relative-sans-right $stats --benchmarks "$BENCHMARKS" --separator 12 --rename "Bigloo.fltlb" "Scheme self-tagging (2-tag, mantissa low-bits)" --rename "Bigloo.fltnz" "Scheme self-tagging (2-tag)" --rename "Bigloo.flt" "Scheme self-tagging (3-tag)" --rename "Bigloo.flt1" "Scheme self-tagging (1-tag)" --rename "Bigloo.nan" "Scheme NaN-boxing" --rename "Bigloo.nun" "Scheme NuN-boxing" --rename "Bigloo.bigloo" "orig" --rename "Bigloo" "orig" --values --colors "$colors" \
+    $ROOT/download/bglstone/bin/gnuplothistogram -o $dir/$plot --size $size --relative-sans-right $stats --benchmarks "$BENCHMARKS" --separator 12 --rename "Bigloo.fltlb" "Scheme self-tagging (2-tag, mantissa low-bits)" --rename "Bigloo.fltnz" "Scheme self-tagging (2-tag)" --rename "Bigloo.flt" "Scheme self-tagging (3-tag)" --rename "Bigloo.flt1" "Scheme self-tagging (1-tag)" --rename "Bigloo.nan" "Scheme NaN-boxing" --rename "Bigloo.nun" "Scheme NuN-boxing" --rename "Bigloo.bigloo" "orig" --rename "Bigloo" "orig" --values --colors "#$colors" \
       && (cd $dir; unprefix $plot.csv) \
       && (cd $dir; gnuplot $plot.plot) 
   fi
@@ -64,13 +64,13 @@ plot() {
 #*    All PDF barcharts                                                */
 #*---------------------------------------------------------------------*/
 # bigloo vs bigloo_fltlb
-plot $PLOTDIR/bigloo_vs_fltlb.pdf "$COLORLB" "6,2" $STATS/bigloo.stat $STATS/bigloo_fltlb.stat
+plot $PLOTDIR/bigloo_vs_fltlb.pdf "#$COLORLB" "6,2" $STATS/bigloo.stat $STATS/bigloo_fltlb.stat
 
 # bigloo vs bigloo_flt
-plot $PLOTDIR/bigloo_vs_flt.pdf "$COLORFLT,$COLORFLTNZ,$COLORFLTONE" "6,3" $STATS/bigloo.stat $STATS/bigloo_flt.stat $STATS/bigloo_fltnz.stat $STATS/bigloo_flt1.stat
+plot $PLOTDIR/bigloo_vs_flt.pdf "#$COLORFLT,#$COLORFLTNZ,#$COLORFLTONE" "6,3" $STATS/bigloo.stat $STATS/bigloo_flt.stat $STATS/bigloo_fltnz.stat $STATS/bigloo_flt1.stat
 
 # bigloo vs bigloo_nan
-plot $PLOTDIR/bigloo_vs_nan.pdf "$COLORNAN,$COLORNUN,$COLORFLTONE" "6,3" $STATS/bigloo.stat $STATS/bigloo_nan.stat $STATS/bigloo_nun.stat $STATS/bigloo_flt1.stat 
+plot $PLOTDIR/bigloo_vs_nan.pdf "#$COLORNAN,#$COLORNUN,#$COLORFLTONE" "6,3" $STATS/bigloo.stat $STATS/bigloo_nan.stat $STATS/bigloo_nun.stat $STATS/bigloo_flt1.stat 
 
 # bigloo vs bigloo_ftl and bigloo_ftl1
 plot $PLOTDIR/bigloo_vs_flts.pdf "#f00,#0f0,#00f,#ff0,#0ff" "6,3" $STATS/bigloo.stat $STATS/bigloo_flt.stat $STATS/bigloo_flt1.stat

@@ -2,13 +2,13 @@
 
 Name: Float Self-Tagging
 
-  * DOI: 10.5281/zenodo.15741204
-  * URL: https://zenodo.org/records/15741204
+  * DOI: 10.5281/zenodo.16356364
+  * URL: https://zenodo.org/records/16356364
   * GITHUB: git@github.com:omelancon/fst-artifact
 
 This artifact can be installed and run either:
 
-  1. using the VM available at https://zenodo.org/records/15741204
+  1. using the VM available at https://zenodo.org/records/16356364
   2. using a native installation from git@github.com:omelancon/fst-artifact
 
 ## Introduction
@@ -175,10 +175,18 @@ The artifact is in the folder `fst-artifact`
 
 ### Run benchmarks
 
-Run all benchmarks (takes about 10 hours):
+Run all benchmarks (takes about 19 hours on a modern fast machine):
 
 ```shell
 (qemu) scripts/run.sh
+```
+
+For better stability of the executions, it is advised to run all the benchmarks
+on the same cpu and to disable randomization. On Linux, this can be
+done with the `taskset` and `setarch` command. Example:
+
+```shell
+(qemu) taskset -c 1 setarch -R scripts/run.sh
 ```
 
 This executes all the benchmarks and stores the results in the following
@@ -231,7 +239,7 @@ Inside the bare Debian VM run the following commands:
 ```
 (qemu) sudo apt update
 (qemu) sudo apt dist-upgrade
-(qemu) sudo apt install -y libgmp-dev libgmp10 autoconf automake libtool libunistring-dev gnuplot bc
+(qemu) sudo apt install -y libgmp-dev libgmp10 autoconf automake libtool libunistring-dev gnuplot bc util-linux
 (qemu) git clone https://github.com:omelancon/fst-artifact
 ```
 
@@ -256,7 +264,7 @@ Under Linux Debian or Ubuntu the requirements can be installed with:
 Once the requirements are installed and operational, clone the
 [GITHUB] (see above) repository and install all the compilers and
 benchmarks needed to produce the figures using the following command
-(which takes around 4-6 hours):
+(which takes around 1.5 hour on a fast modern machine):
 
 ```shell
 (host) scripts/install.sh

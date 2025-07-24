@@ -1,0 +1,88 @@
+
+% used to highlight cells in interval table
+\newcommand{\htmlColorOneTag}{FF00FF}
+\newcommand{\htmlColorTwoTag}{ffb6f3}
+\newcommand{\htmlColorThreeTag}{61D836}
+\newcommand{\htmlColorFourTag}{909090}
+\newcommand{\htmlColorTwoTagNZ}{00A2FF}
+\newcommand{\htmlColorNan}{edd20b}
+\newcommand{\htmlColorAlloc}{aa0000}
+
+\definecolor{tag0}{HTML}{61D836}
+\definecolor{tag3}{HTML}{00A2FF}
+\definecolor{tag4}{HTML}{82BEFA}
+\definecolor{tag7}{HTML}{909090}
+\definecolor{1tag}{HTML}{FF00FF}
+\definecolor{2tag}{HTML}{ffb6f3}
+\definecolor{alloc}{HTML}{aa0000}
+\newcommand{\tagzerocolorname}{green\xspace}
+\newcommand{\tagthreecolorname}{dark blue\xspace}
+\newcommand{\tagfourcolorname}{light blue\xspace}
+\newcommand{\tagsevencolorname}{gray\xspace}
+\newcommand{\onetagcolorname}{bold pink\xspace}
+\newcommand{\twotagcolorname}{light pink\xspace}
+\newcommand{\alloccolorname}{aa0000\xspace}
+
+\newcommand{\bigloocommit}{5b1118\xspace}
+\newcommand{\gambitcommit}{768900\xspace}
+\newcommand{\legendbiglootimenun}{
+\begin{center}
+\begin{tabular}{llllllll}
+\colorrect{self-tagging (1-tag)}{FF00FF}     &
+\colorrect{self-tagging (2-tag w/ prealloc. zero)}{00A2FF}    &
+\colorrect{self-tagging (3-tag)}{61D836}   &
+\colorrect{NaN-boxing}{edd20b}    \\
+\end{tabular}
+\end{center}
+}
+\newcommand{\legendgambittimenun}{
+\begin{center}
+\begin{tabular}{llllllll}
+\colorrect{self-tagging (1-tag)}{FF00FF}     &
+\colorrect{self-tagging (2-tag)}{ffb6f3}    &
+\colorrect{self-tagging (3-tag)}{61D836}   &
+\colorrect{self-tagging (4-tag)}{909090}  \\
+\end{tabular}
+\end{center}
+}
+\newcommand{\legendbiglootimealloc}{
+\begin{center}
+\begin{tabular}{l}
+\colorrect{self-tagging (1-tag)}{FF00FF}
+\end{tabular}
+\end{center}
+}
+\newcommand{\legendgambittimealloc}{
+\begin{center}
+\begin{tabular}{l}
+\colorrect{self-tagging (4-tag)}{909090}
+\end{tabular}
+\end{center}
+}
+\newcommand{\legendbiglootimemantissa}{
+\begin{center}
+\colorrect{self-tagging (2-tag, mantissa low bits)}{ac2db7}
+\end{center}
+}
+\newcommand{\legendbigloomem}{
+\begin{center}
+\begin{tabular}{lll}
+\colorrect{self-tagging (1-tag)}{FF00FF}     &
+\colorrect{self-tagging (2-tag w/ prealloc. zero)}{00A2FF}    &
+\colorrect{self-tagging (3-tag)}{61D836}   \\
+\colorrect{NaN-boxing}{edd20b}    &
+\colorrect{NuN-boxing}{cf0034}    \\
+\end{tabular}
+\end{center}
+}
+\newcommand{\legendbigloobranch}{
+\begin{center}
+\begin{tabular}{lll}
+\colorrect{self-tagging (2-tag, mantissa low-bits)}{ac2db7}     &
+\colorrect{self-tagging (1-tag)}{FF00FF} & \\
+\colorrect{self-tagging (2-tag w/ prealloc. zero)}{00A2FF}    &
+\colorrect{NaN-boxing}{edd20b}    &
+\colorrect{NuN-boxing}{cf0034}    \\
+\end{tabular}
+\end{center}
+}

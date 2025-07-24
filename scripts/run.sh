@@ -4,7 +4,7 @@
 #*    -------------------------------------------------------------    */
 #*    Author      :  Manuel Serrano                                    */
 #*    Creation    :  Thu Oct  3 09:44:21 2024                          */
-#*    Last change :  Fri Jun 27 15:58:23 2025 (serrano)                */
+#*    Last change :  Wed Jul 23 08:02:10 2025 (serrano)                */
 #*    Copyright   :  2024-25 Manuel Serrano                            */
 #*    -------------------------------------------------------------    */
 #*    Run all the FLT benchmarks                                       */
@@ -24,6 +24,7 @@ mkdir -p $STATS
 mkdir -p $BMEMS
 mkdir -p $BRANCHS
 mkdir -p $HEAPS
+mkdir -p $FLOATS
 mkdir -p $LOGS
 
 #*---------------------------------------------------------------------*/
@@ -77,32 +78,50 @@ for bigloo in bigloo bigloo_flt1; do
   for benchmark in $SCM_FLOAT_BENCHMARKS; do
     if [ ! -f $HEAPS/$benchmark/$bigloo.heap ]; then
       mkdir -p $HEAPS/$benchmark
+      echo "size,time" > $HEAPS/$benchmark/$bigloo.heap.reps
       echo "size,time" > $HEAPS/$benchmark/$bigloo.heap.tmp
       for size in $SCM_BENCHMARKS_VECTOR_SIZES; do
-        echo "  $benchmark $size"
-        printf "$((size * 8))," >> $HEAPS/$benchmark/$bigloo.heap.tmp
-        (cd $downloaddir/$bglstone/src/$benchmark/bigloo \
-        && BGLSTONE_FILLER="(make-vector $size)" bash -c "time ./bigloo.exe") 2>&1 \
-        | fgrep real | sed -e 's/[^0-9]*//' -e 's/m/*60+/' -e 's/s//' | bc >> $HEAPS/$benchmark/$bigloo.heap.tmp
+        echo -n "  $benchmark $size"
+        bytes_size=$((size * 8))
+        time_sum=0.0
+        for rep in $(seq $REPETITION); do
+          echo -n "."
+          rep_time=$( (cd $downloaddir/$bglstone/src/$benchmark/bigloo \
+            && BGLSTONE_FILLER="(make-vector $size)" bash -c "time ./bigloo.exe") 2>&1 \
+            | fgrep real | sed -e 's/[^0-9]*//' -e 's/m/*60+/' -e 's/s//' | bc)
+          time_sum=$(echo "$time_sum + $rep_time" | bc)
+          printf "$bytes_size,$rep_time\n" >> $HEAPS/$benchmark/$bigloo.heap.reps
+        done
+        echo
+        printf "$bytes_size,$(echo "scale=2; $time_sum / $REPETITION" | bc)\n" >> $HEAPS/$benchmark/$bigloo.heap.tmp
       done
       mv $HEAPS/$benchmark/$bigloo.heap.tmp $HEAPS/$benchmark/$bigloo.heap
     fi
   done
 done
 
-for gambit in gambit_0 gambit_1; do
+for gambit in gambit_0 gambit_4; do
   echo "\e[1;31m=== heap ($gambit)\e[0m"
   bglstone="bglstone_$gambit"
   for benchmark in $SCM_FLOAT_BENCHMARKS; do
     if [ ! -f $HEAPS/$benchmark/$gambit.heap ]; then
       mkdir -p $HEAPS/$benchmark
+      echo "size,time" > $HEAPS/$benchmark/$gambit.heap.reps
       echo "size,time" > $HEAPS/$benchmark/$gambit.heap.tmp
       for size in $SCM_BENCHMARKS_VECTOR_SIZES; do
-        echo "  $benchmark $size"
-        printf "$((size * 8))," >> $HEAPS/$benchmark/$gambit.heap.tmp
-        (cd $downloaddir/$bglstone/src/$benchmark/gambit \
-        && BGLSTONE_FILLER="(make-vector $size)" bash -c "time ./gambit.exe") 2>&1 \
-        | fgrep real | sed -e 's/[^0-9]*//' -e 's/m/*60+/' -e 's/s//' | bc >> $HEAPS/$benchmark/$gambit.heap.tmp
+        echo -n "  $benchmark $size"
+        bytes_size=$((size * 8))
+        time_sum=0
+        for rep in $(seq $REPETITION); do
+          echo -n "."
+          rep_time=$( (cd $downloaddir/$bglstone/src/$benchmark/gambit \
+            && BGLSTONE_FILLER="(make-vector $size)" bash -c "time ./gambit.exe") 2>&1 \
+            | fgrep real | sed -e 's/[^0-9]*//' -e 's/m/*60+/' -e 's/s//' | bc)
+          time_sum=$(echo "$time_sum + $rep_time" | bc)
+          printf "$bytes_size,$rep_time\n" >> $HEAPS/$benchmark/$gambit.heap.reps
+        done
+        echo
+        printf "$bytes_size,$(echo "scale=2; $time_sum / $REPETITION" | bc)\n" >> $HEAPS/$benchmark/$gambit.heap.tmp
       done
       mv $HEAPS/$benchmark/$gambit.heap.tmp $HEAPS/$benchmark/$gambit.heap
     fi
@@ -165,6 +184,26 @@ if [ "$test_branch_prediction " = "1 " ]; then
   fi
 fi
 
+#float distribution
+echo "\e[1;31m=== floats ($GAMBIT_FLOAT)\e[0m"
+bglstone_floats="bglstone_$GAMBIT_FLOAT"
+gsc_floats="$installdir/$GAMBIT_FLOAT/bin/gsc"
+for benchmark in $SCM_FLOAT_BENCHMARKS; do
+  if [ ! -f $FLOATS/$benchmark/$benchmark.floats ]; then
+    mkdir -p $FLOATS/$benchmark
+    echo "  $benchmark"
+    (cd $downloaddir/$bglstone_floats/src/$benchmark/gambit \
+    && $gsc_floats -prelude "(##include \"$dir/gambit-float-counter-prelude.scm\")" \
+                   -exe \
+                   -e "(load \"../../r7rs/gambit-module-macro.scm\")" \
+                   $benchmark.scm \
+    && ./$benchmark) > $FLOATS/$benchmark/$benchmark.floats.tmp
+    sed -n '/=== float distribution ===/,/=== end float distribution ===/p' \
+    $FLOATS/$benchmark/$benchmark.floats.tmp | sed '1d;$d' > $FLOATS/$benchmark/$benchmark.floats
+    rm $FLOATS/$benchmark/$benchmark.floats.tmp
+  fi
+done
+
 # hop
 # echo "\e[1;33m=== jsbench\e[0m"
 # conf=`echo $hop | sed -e 's/hop//'`
@@ -180,8 +219,3 @@ fi
 #   (cd $downloaddir/$jsbench \
 #      && ./hopstone.sh --hopc=$FST_ARTIFACT_ROOT/install/hop/bin/hopc --hop=$FST_ARTIFACT_ROOT/install/hop/bin/hop --dir=$LOGS -e hop -e hop_flt -e hop_nan -e hop_nun -e hop_fltlb -e hop_fltnz -e hop_flt1 octane jetstream sunspider bglstone)
 # fi
-  
-#*---------------------------------------------------------------------*/
-#*    last message                                                     */
-#*---------------------------------------------------------------------*/
-echo "\e[1;29m*** $PLOTDIR\e[0m complete."
