@@ -203,7 +203,7 @@ set bmargin 3")
       (fprintf (current-error-port) "set label 1 '~a' font 'Verdana,10' at 20,1 offset -0.5,0.5 tc 'red'\n\n" (nice (car compilers)) *base-color*)
       
       (when sep
-	 (fprintf (current-error-port) "set arrow from ~a,0 to ~a,GPVAL_Y_MAX nohead ls 1000 dashtype 2 front\n\n"
+	 (fprintf (current-error-port) "set arrow from ~a,graph 0 to ~a,graph 1 nohead ls 1000 dashtype 2 front\n\n"
 	    (- *separator* 0.5) (- *separator* 0.5)))
 
       (fprintf (current-error-port) "plot \\\n~(,\\\n),\\\n~(,\\\n)\n"
@@ -213,7 +213,7 @@ set bmargin 3")
 	    (cdr compilers) (iota (-fx (length compilers) 1) 2))
 	 (let ((table (vector-ref *offset-tables* (length compilers))))
 	    (map (lambda (comp idx)
-		    (format "  '~a.csv' u ($0+~a):($~a*1.2):(sprintf(\"%3.2f\",$~a)) with labels font 'Verdana,6' rotate by 90 notitle"
+		    (format "  '~a.csv' u ($0+~a):(round(($~a+0.1)*10.0) / 10.0):(sprintf(\"%3.2f\",$~a)) with labels font 'Verdana,6' rotate by 90 notitle"
 		       output (vector-ref table (-fx idx 2)) idx idx))
 	       (cdr compilers) (iota (-fx (length compilers) 1) 2)))))
 
