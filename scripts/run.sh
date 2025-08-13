@@ -27,9 +27,35 @@ mkdir -p $HEAPS
 mkdir -p $FLOATS
 mkdir -p $LOGS
 
+cbench_only=false
+
+for arg in "$@"; do
+  if [ "$arg" = "--cbench-only" ]; then
+    cbench_only=true
+    break
+  fi
+done
+
 #*---------------------------------------------------------------------*/
 #*    benchmark executions                                             */
 #*---------------------------------------------------------------------*/
+
+echo "\e[1;30m=== cbench\e[0m"
+echo "" > $STATS/cbench.stat
+
+for benchmark in $C_BENCHMARKS; do
+    echo "exec $benchmark.exe ... "
+    for rep in $(seq $REPETITION); do
+      rep_time=$( (cd $installdir/cbench && bash -c "time ./$benchmark.exe") 2>&1 \
+              | fgrep real | sed -e 's/[^0-9]*//' -e 's/m/*60+/' -e 's/s//' | bc)
+      echo "$benchmark $rep_time" >> $STATS/cbench.stat
+    done
+done
+
+if $cbench_only; then
+    exit 0
+fi
+
 # performance
 for bigloo in $BIGLOOS; do
   echo "\e[1;30m=== bglstone ($bigloo)\e[0m"

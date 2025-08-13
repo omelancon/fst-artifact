@@ -53,7 +53,7 @@ int main (int argc, char *argv[])
   int i;
   int result;
 
-  for (i=0; i<100000; i++)
+  for (i=0; i<7500000; i++)
     result = run ();
 
   if (result != 6)

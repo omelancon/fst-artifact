@@ -67,7 +67,7 @@ static void four1 (FLOAT *data, int n)
     }
 }
 
-#define N 1024
+#define N 65536
 
 FLOAT data[N];
 
@@ -85,7 +85,7 @@ int main (int argc, char *argv[])
   for (i=0; i<N; i++)
     data[i] = 0.0;
 
-  for (i=0; i<2000; i++)
+  for (i=0; i<2100; i++)
     result = test ();
 
   if (result != 0.)

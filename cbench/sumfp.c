@@ -21,12 +21,12 @@ int main (int argc, char *argv[])
 {
   int i;
   FLOAT result;
-  int n = 10000;
+  int n = 1e6;
 
   if (argc > 1)
     n = atoi (argv[1]);
 
-  for (i=0; i<5000; i++)
+  for (i=0; i<3600; i++)
     result = run (n);
 
   if (result != 50005000.)

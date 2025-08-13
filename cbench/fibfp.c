@@ -21,7 +21,7 @@ int main (int argc, char *argv[])
   if (argc > 1)
     n = atoi (argv[1]);
 
-  for (i=0; i<2; i++)
+  for (i=0; i<140; i++)
     result = fib (n);
 
   if (result != 9227465.)

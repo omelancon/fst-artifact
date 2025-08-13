@@ -57,7 +57,7 @@ int main (int argc, char *argv[])
   int i;
   int result;
 
-  for (i=0; i<100; i++)
+  for (i=0; i<5100; i++)
     result = test ();
 
   if (result != 5)
