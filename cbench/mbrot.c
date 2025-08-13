@@ -43,25 +43,25 @@ static void mbrot (int *matrix, FLOAT r, FLOAT i, FLOAT step, int n)
       matrix[y*n+x] = count (r, i, step, x, y);
 }
 
-static int test ()
-{
-  int matrix[N*N];
-
-  mbrot (matrix, -1.0, -0.5, 0.005, N);
-
-  return matrix[0];
+double parse_or_default(const char *s, double def) {
+  return s ? strtod(s, NULL) : def;
 }
 
-int main (int argc, char *argv[])
+int main(int argc, char **argv)
 {
-  int i;
+  double r    = parse_or_default(argc>1?argv[1]:NULL, -1.0);
+  double i    = parse_or_default(argc>2?argv[2]:NULL, -0.5);
+  double step = parse_or_default(argc>3?argv[3]:NULL, 0.005);
+
   int result;
 
-  for (i=0; i<5100; i++)
-    result = test ();
+  for (int it=0; it<5100; ++it) {
+    int matrix[N*N];
+    mbrot(matrix, r, i, step, N);
+    result = matrix[0];
+  }
 
-  if (result != 5)
-    printf ("*** wrong result ***\n");
-
+  if (result != 5) printf("*** wrong result ***\n");
+  
   return 0;
 }
