@@ -74,4 +74,5 @@ $dir/bglstone_gambit_3.sh
 $dir/bglstone_gambit_4.sh
 $dir/bglstone_gambit_nun.sh
 
-# $dir/jsbench.sh
+# C benchmarks
+$dir/cbench.sh

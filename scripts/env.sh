@@ -45,6 +45,7 @@ BRANCHS=`dirname $dir`/branchs.$host
 HEAPS=`dirname $dir`/heaps.$host
 FLOATS=`dirname $dir`/floats.$host
 LOGS=`dirname $dir`/logs.$host
+CBENCH_SOURCES=`dirname $dir`/cbench
 
 # artifact colors
 COLORFLTONE="FF00FF"
@@ -82,6 +83,7 @@ SCM_FLOAT_BENCHMARKS_NAMES=$(echo $SCM_FLOAT_BENCHMARKS | sed -E 's/\br7rs-//g')
 SCM_BENCHMARKS_NAMES=$(echo $SCM_BENCHMARKS | sed -E 's/\br7rs-//g')
 
 JS_BENCHMARKS="bague base64 basic-es2015 boyer boyer-scm crypto  crypto-aes crypto-md5 crypto-sha1 date-format-tofte date-format-xparb deltablue earley earley-boyer earley-scm flightplanner hash-map leval maze puzzle qsort regexp richards sieve sieve-mem splay tagcloud traverse unipoker almabench n-body navier-stokes raytrace"
+C_BENCHMARKS="fft fibfp mbrot nucleic pnpoly sum1 sumfp"
 
 # vector size for heap benchmarks
 SCM_BENCHMARKS_VECTOR_SIZES="0 10000 100000 1000000 10000000 100000000"
