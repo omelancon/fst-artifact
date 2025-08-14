@@ -435,3 +435,38 @@ for pattern in $float_buckets; do
   done
 done
 cat $float_table_csv | tr -s ' ' | column -t > $PLOTDIR/floats.txt
+
+#*---------------------------------------------------------------------*/
+#*    Grounding with cbench                                            */
+#*---------------------------------------------------------------------*/
+
+get_grounding_cbench_average() {
+    local stats_file=$1
+    shift
+    local benchname=$1
+
+    awk -v b="$benchname" '$1 == b { sum += $2; count++ } END { if (count > 0) print sum / count }' "$stats_file"
+}
+
+get_grounding_scheme_average() {
+    local stats_file=$1
+    shift
+    local benchname=$1
+
+    grep "r7rs-${benchname} " "$stats_file" |
+    grep -oE '[0-9]+' |
+    awk '{sum += $1; n++} END {if (n) printf("%.1f\n", (sum/1000)/n)}'
+}
+
+for benchmark in $C_BENCHMARKS; do
+    c_time=$(get_grounding_cbench_average $STATS/cbench.stat $benchmark)
+    bigloo_time=$(get_grounding_scheme_average $STATS/bigloo.stat $benchmark)
+    gambit_time=$(get_grounding_scheme_average $STATS/gambit_0.stat $benchmark)
+    bigloo_st_time=$(get_grounding_scheme_average $STATS/bigloo_flt1.stat $benchmark)
+    gambit_st_time=$(get_grounding_scheme_average $STATS/gambit_4.stat $benchmark)
+    echo "C: $c_time"
+    echo "B: $bigloo_time"
+    echo "G: $gambit_time"
+    echo "Bst: $bigloo_st_time"
+    echo "Gst: $gambit_st_time"
+done
