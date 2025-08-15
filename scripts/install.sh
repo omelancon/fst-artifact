@@ -76,3 +76,6 @@ $dir/bglstone_gambit_nun.sh
 
 # C benchmarks
 $dir/cbench.sh
+
+# R7RS benchmarks
+$dir/r7rs_benchmarks.sh
