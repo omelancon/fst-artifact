@@ -1,3 +1,4 @@
+#!/bin/sh
 package=r7rs_benchmarks
 color=39
 
