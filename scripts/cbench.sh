@@ -14,7 +14,7 @@ for benchmark in $C_BENCHMARKS; do
     fi
 
     echo -n "compiling $benchmark.c ... "
-    if gcc -O3 "$CBENCH_SOURCES/$benchmark.c" -o "$installdir/$benchmark.exe" -lm 2>> "$logdir/cbench.log"; then
+    if $CC -O3 "$CBENCH_SOURCES/$benchmark.c" -o "$installdir/$benchmark.exe" -lm 2>> "$logdir/cbench.log"; then
         echo "DONE"
     else
         echo "\033[0;31mFAIL\033[0m"

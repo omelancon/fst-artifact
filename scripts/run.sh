@@ -27,11 +27,11 @@ mkdir -p $HEAPS
 mkdir -p $FLOATS
 mkdir -p $LOGS
 
-cbench_only=false
+grounding_only=false
 
 for arg in "$@"; do
-  if [ "$arg" = "--cbench-only" ]; then
-    cbench_only=true
+  if [ "$arg" = "--grounding-only" ]; then
+    grounding_only=true
     break
   fi
 done
@@ -39,8 +39,7 @@ done
 #*---------------------------------------------------------------------*/
 #*    benchmark executions                                             */
 #*---------------------------------------------------------------------*/
-
-echo "\e[1;30m=== cbench\e[0m"
+echo "=== cbench"
 echo "" > $STATS/cbench.stat
 
 for benchmark in $C_BENCHMARKS; do
@@ -52,7 +51,7 @@ for benchmark in $C_BENCHMARKS; do
     done
 done
 
-if $cbench_only; then
+if $grounding_only; then
     exit 0
 fi
 

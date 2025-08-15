@@ -129,6 +129,11 @@ jsbench_giturl=https://github.com/manuel-serrano/jsbench
 jsbench_commit=7c8fc4e58d2a5c7980c207d302b1d1cb18308a5c
 jsbench_branch=master
 
+# chez
+chez_giturl=https://github.com/cisco/ChezScheme
+chez_commit=fdf6b3f5d069bf53082bb827f46714f2de8f11f5
+chez_branch=main
+
 # gambit
 gambit_giturl=https://github.com/gambit/gambit
 gambit_commit=768900f31794aadb09230d4bbe5f23869d58912d
