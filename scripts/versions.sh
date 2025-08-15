@@ -134,6 +134,11 @@ chez_giturl=https://github.com/cisco/ChezScheme
 chez_commit=fdf6b3f5d069bf53082bb827f46714f2de8f11f5
 chez_branch=main
 
+# r7rs-benchmarks
+r7rs_benchmarks_giturl=https://github.com/ecraven/r7rs-benchmarks.git
+r7rs_benchmarks_commit=8ed2d74acc8828f91c5cb12afb41f6b8fbd403ce
+r7rs_benchmarks_branch=master
+
 # gambit
 gambit_giturl=https://github.com/gambit/gambit
 gambit_commit=768900f31794aadb09230d4bbe5f23869d58912d

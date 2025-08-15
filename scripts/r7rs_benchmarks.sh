@@ -4,4 +4,7 @@ color=39
 . `dirname $0`/versions.sh
 . `dirname $0`/common.sh
 
-git clone git@github.com:ecraven/r7rs-benchmarks.git $downloaddir
+# download
+if [ "$action " = "download " -o "$action " = "all " ]; then
+  download_git || exit 1
+fi
