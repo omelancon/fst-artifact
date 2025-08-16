@@ -451,22 +451,34 @@ get_grounding_cbench_average() {
 get_grounding_scheme_average() {
     local stats_file=$1
     shift
+    local compiler=$1
+    shift
     local benchname=$1
 
-    grep "r7rs-${benchname} " "$stats_file" |
-    grep -oE '[0-9]+' |
-    awk '{sum += $1; n++} END {if (n) printf("%.1f\n", (sum/1000)/n)}'
+    grep -E "$compiler" $stats_file \
+      | grep -E ",${benchname}(:|,)" \
+      | awk -F',' '{print $3}' \
+      | awk -F',' '
+        {
+          val=$1
+          # match a decimal number (like "3.42", ".640144", or "5")
+          if (val ~ /^-?[0-9]*\.?[0-9]+$/ && val+0 < 10.0) {
+              printf("%.2f\n", val)
+          } else {
+              print "ERROR"
+          }
+        }'
 }
 
-for benchmark in $C_BENCHMARKS; do
-    c_time=$(get_grounding_cbench_average $STATS/cbench.stat $benchmark)
-    bigloo_time=$(get_grounding_scheme_average $STATS/bigloo.stat $benchmark)
-    gambit_time=$(get_grounding_scheme_average $STATS/gambit_0.stat $benchmark)
-    bigloo_st_time=$(get_grounding_scheme_average $STATS/bigloo_flt1.stat $benchmark)
-    gambit_st_time=$(get_grounding_scheme_average $STATS/gambit_4.stat $benchmark)
-    echo "C: $c_time"
-    echo "B: $bigloo_time"
-    echo "G: $gambit_time"
-    echo "Bst: $bigloo_st_time"
-    echo "Gst: $gambit_st_time"
+echo "Benchmark,Bigloo (1-tag),Gambit (4-tag), Chez Scheme" > $PLOTDIR/r7rs_benchmarks.csv
+
+for benchmark in $SCM_BENCHMARKS_NAMES; do
+    #c_time=$(get_grounding_cbench_average $STATS/cbench.stat $benchmark)
+    bigloo_st_time=$(get_grounding_scheme_average $STATS/r7rs_benchmarks.stat bigloo $benchmark)
+    gambit_st_time=$(get_grounding_scheme_average $STATS/r7rs_benchmarks.stat gambit $benchmark)
+    chez_time=$(get_grounding_scheme_average $STATS/r7rs_benchmarks.stat chez $benchmark)
+    echo "$benchmark,$bigloo_st_time,$gambit_st_time,$chez_time" >> $PLOTDIR/r7rs_benchmarks.csv
 done
+
+column -t -s, < $PLOTDIR/r7rs_benchmarks.csv > $PLOTDIR/r7rs_benchmarks.plot
+
