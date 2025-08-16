@@ -11,6 +11,7 @@
 #*=====================================================================*/
 
 REPETITION=10
+GROUNDING_REPETITION=1
 FST_ARTIFACT_ROOT=${FST_ARTIFACT_ROOT:-$PWD}
 
 downloaddir=${DOWNLOADDIR:-$FST_ARTIFACT_ROOT/download/${package}}

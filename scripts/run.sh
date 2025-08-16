@@ -44,12 +44,38 @@ echo "" > $STATS/cbench.stat
 
 for benchmark in $C_BENCHMARKS; do
     echo "exec $benchmark.exe ... "
-    for rep in $(seq $REPETITION); do
+    for rep in $(seq $GROUNDING_REPETITION); do
       rep_time=$( (cd $installdir/cbench && bash -c "time ./$benchmark.exe") 2>&1 \
               | fgrep real | sed -e 's/[^0-9]*//' -e 's/m/*60+/' -e 's/s//' | bc)
       echo "$benchmark $rep_time" >> $STATS/cbench.stat
     done
 done
+
+echo "=== R7RS benchmarks"
+echo "" > $STATS/r7rs-benchmarks.stat
+(cd $downloaddir/r7rs_benchmarks && make clean)
+
+echo "=== R7RS benchmarks (ChezScheme)"
+for benchmark in $SCM_BENCHMARKS_NAMES; do
+  (export CHEZ=$installdir/chez/bin/scheme && \
+   cd $downloaddir/r7rs_benchmarks && \
+   ./bench chez $benchmark)
+done
+
+echo "=== R7RS benchmarks (Bigloo 1-tag)"
+for benchmark in $SCM_BENCHMARKS_NAMES; do
+  (export BIGLOO=$installdir/bigloo_flt1/bin/bigloo && \
+   cd $downloaddir/r7rs_benchmarks && \
+   ./bench bigloo $benchmark)
+done
+
+echo "=== R7RS benchmarks (Gambit 4-tag)"
+for benchmark in $SCM_BENCHMARKS_NAMES; do
+  (export GAMBITC=$installdir/gambit_4/bin/gsc && \
+   cd $downloaddir/r7rs_benchmarks && \
+   ./bench gambitc $benchmark)
+done
+
 
 if $grounding_only; then
     exit 0
