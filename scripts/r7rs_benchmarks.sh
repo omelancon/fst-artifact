@@ -16,4 +16,16 @@ if [ "$action " = "download " -o "$action " = "all " ]; then
    (cd $downloaddir && git checkout --theirs bench) >> $log 2>&1
    cp -R $downloaddir/../bglstone/src/r7rs/inputs/* $downloaddir/inputs
    sed -i 's|\.\./\.\./r7rs/inputs|inputs|g' "$downloaddir"/inputs/*.input
+   sed -i 's|#;||g' $downloaddir/src/Bigloo-prelude.scm
+   echo '(define (real-part o) o)
+         (define (imag-part o) o)
+         (define (numerator o) 1)
+         (define (denominator o) 1)
+         (define (import . l) #unspecified)
+         (define (scheme . l) #unspecified)
+         (define (base) #unspecified)
+         (define (file) #unspecified)
+         (define (cxr) #unspecified)
+         (define (char) #unspecified)
+         (define (complex) #unspecified)' >> $downloaddir/src/Bigloo-prelude.scm
 fi
