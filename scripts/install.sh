@@ -19,18 +19,35 @@ dir=`dirname $path`
 . $dir/env.sh
 
 plot_only=false
+grounding_only=false
 
 for arg in "$@"; do
   if [ "$arg" = "--plot-only" ]; then
     plot_only=true
-    break
+    continue
+  fi
+
+  if [ "$arg" = "--grounding-only" ]; then
+    grounding_only=true
+    continue
   fi
 done
 
 if $plot_only; then
-    $dir/bigloo.sh
-    $dir/bglstone.sh
-    exit 0
+  $dir/bigloo.sh
+  $dir/bglstone.sh
+  exit 0
+fi
+
+if $grounding_only; then
+  $dir/bigloo.sh
+  $dir/bigloo_flt1.sh
+  $dir/gambit_0.sh
+  $dir/gambit_4.sh
+  $dir/chez.sh
+  $dir/cbench.sh
+  $dir/r7rs_benchmarks.sh
+  exit 0
 fi
 
 # compilers
