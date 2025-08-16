@@ -46,6 +46,7 @@ if $grounding_only; then
   $dir/gambit_4.sh
   $dir/chez.sh
   $dir/cbench.sh
+  $dir/bglstone.sh
   $dir/r7rs_benchmarks.sh
   exit 0
 fi
