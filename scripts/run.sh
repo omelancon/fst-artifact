@@ -52,7 +52,7 @@ for benchmark in $C_BENCHMARKS; do
 done
 
 echo "=== R7RS benchmarks"
-echo "" > $STATS/r7rs-benchmarks.stat
+rm $STATS/r7rs_benchmarks.stat
 (cd $downloaddir/r7rs_benchmarks && make clean)
 
 echo "=== R7RS benchmarks (ChezScheme)"
@@ -76,6 +76,7 @@ for benchmark in $SCM_BENCHMARKS_NAMES; do
    ./bench gambitc $benchmark)
 done
 
+(cd $downloaddir/r7rs_benchmarks && make all.csv && cp all.csv $STATS/r7rs_benchmarks.stat)
 
 if $grounding_only; then
     exit 0
