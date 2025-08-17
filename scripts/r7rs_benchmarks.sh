@@ -14,6 +14,7 @@ if [ "$action " = "download " -o "$action " = "all " ]; then
      src/Chez-postlude.scm && \
    git show 7357ac5b2b59c88a6f2e5e7267d2da8259a6ce92 -- bench | git apply -R --3way --index) >> $log 2>&1
    (cd $downloaddir && git checkout --theirs bench) >> $log 2>&1
+   cp $downloaddir/../bglstone/src/r7rs/src/dynamic.scm $downloaddir/src/dynamic.scm
    cp -R $downloaddir/../bglstone/src/r7rs/inputs/* $downloaddir/inputs
    sed -i 's|\.\./\.\./r7rs/inputs|inputs|g' "$downloaddir"/inputs/*.input
    sed -i 's|#;||g' $downloaddir/src/Bigloo-prelude.scm
