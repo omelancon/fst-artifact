@@ -203,8 +203,8 @@ set bmargin 3")
 	    (cdr compilers) (iota (length compilers) 2))
 	 (let ((table (get-offsets (length compilers))))
 	    (map (lambda (comp idx)
-		    (format "  '~a.csv' u ($0+~a):($~a*2.0):(sprintf(\"%3.2f\",$~a)) with labels font 'Verdana,6' rotate by 90 notitle"
-		       output (vector-ref table idx) idx idx idx))
+		    (format "  '~a.csv' u ($0+~a):(($~a > 0.001 ? $~a : 0.001)*2.0):(sprintf(\"%3.2f\",$~a)) with labels font 'Verdana,6' rotate by 90 notitle"
+		       output (vector-ref table idx) idx idx idx idx))
 	       (cdr compilers) (iota (length compilers) 2)))))
    
    ;; color patching
