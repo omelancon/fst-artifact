@@ -82,7 +82,7 @@ set xtics scale 0
 set datafile separator ','
 unset mytics
 
-set yrange [0.001:100]
+set yrange [0.001:200]
 
 set lmargin 6
 set rmargin 1
