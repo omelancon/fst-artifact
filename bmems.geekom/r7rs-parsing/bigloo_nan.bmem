@@ -1,0 +1,30 @@
+(monitor (info (exec "./a.out") (version "0.0.4") (sizeof-word 1))
+  (gc
+    (number: 0 alloc: #l1028870 heap: #l4259840 live: #l214368 lastfun: "unknown" time: #l1785450052190535000)
+    (number: 1 alloc: #l1120107 heap: #l4259840 live: #l195520 lastfun: "unknown" time: #l1785450052238659000)
+    (number: 2 alloc: #l1124409 heap: #l4259840 live: #l183472 lastfun: "unknown" time: #l1785450052286434000)
+    (number: 3 alloc: #l1127676 heap: #l4259840 live: #l226832 lastfun: "unknown" time: #l1785450052335501000)
+    (number: 4 alloc: #l1115731 heap: #l4259840 live: #l202560 lastfun: "unknown" time: #l1785450052383020000)
+    (number: 5 alloc: #l1122323 heap: #l4259840 live: #l188160 lastfun: "unknown" time: #l1785450052431190000)
+    (number: 6 alloc: #l1126844 heap: #l4259840 live: #l230512 lastfun: "unknown" time: #l1785450052479421000)
+    (number: 7 alloc: #l1115400 heap: #l4259840 live: #l205776 lastfun: "unknown" time: #l1785450052527038000)
+    (number: 8 alloc: #l1121931 heap: #l4259840 live: #l191168 lastfun: "unknown" time: #l1785450052574841000)
+    (number: 9 alloc: #l664240 heap: #l4259840 live: #l183264 lastfun: "unknown" time: #l1785450052603331000)
+   )
+  (alloc 
+    (kbsize 10417)
+    (gc-count 10)
+    (files
+      (file: "/home/feeley/fst-artifact/download/bglstone_nan/src/r7rs-parsing/bigloo/r7rs-parsing.c"
+       lines: ((line: 2017 kbsize: 9719 %: 4.94066e-322 count: 493250 types: #("string"))          (line: 1486 kbsize: 253 %: 0 count: 250 types: #("string"))          (line: 5242 kbsize: 182 %: 0 count: 10500 types: #("string"))          (line: 342 kbsize: 43 %: 0 count: 1287 types: #("string" "mutex" "bignum" "?" "pair" "class" "vector" "keyword" "symbol"))))
+      (file: "lib/init.c"
+       lines: ((line: 574 kbsize: 47 %: 5.68175e-322 count: 64 types: #("vector" "keyword" "input-port" "output-port" "string" "mutex"))))
+       )
+   )
+  (types
+    (count 512250)
+    (types
+      (string (kbsize: 10244 %: 98.3431 cnt: 505576))
+      (pair (kbsize: 83 %: 0.802735 cnt: 5352))
+   ))
+)

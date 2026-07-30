@@ -1,0 +1,28 @@
+(monitor (info (exec "./a.out") (version "0.0.4") (sizeof-word 1))
+  (gc
+    (number: 0 alloc: #l942383 heap: #l4259840 live: #l126560 lastfun: "unknown" time: #l1785450067903668000)
+   )
+  (alloc 
+    (kbsize 920)
+    (gc-count 1)
+    (files
+      (file: "lib/init.c"
+       lines: ((line: 574 kbsize: 47 %: 4.94066e-322 count: 64 types: #("vector" "keyword" "input-port" "output-port" "string" "mutex"))))
+      (file: "/home/feeley/fst-artifact/download/bglstone_nan/src/r7rs-sum1/bigloo/r7rs-sum1.c"
+       lines: ((line: 1154 kbsize: 822 %: 5.68175e-322 count: 300 types: #("string" "procedure" "input-port"))          (line: 229 kbsize: 43 %: 5.68175e-322 count: 1287 types: #("string" "mutex" "bignum" "?" "pair" "class" "vector" "keyword" "symbol"))))
+       )
+   )
+  (types
+    (count 1764)
+    (types
+      (string (kbsize: 822 %: 89.4239 cnt: 617))
+      (vector (kbsize: 51 %: 5.64357 cnt: 271))
+      (input-port (kbsize: 16 %: 1.83789 cnt: 103))
+      (class (kbsize: 6 %: 0.742798 cnt: 37))
+      (symbol (kbsize: 5 %: 0.628195 cnt: 370))
+      (procedure (kbsize: 4 %: 0.516138 cnt: 101))
+      (? (kbsize: 4 %: 0.500752 cnt: 158))
+      (mutex (kbsize: 1 %: 0.161293 cnt: 19))
+      (keyword (kbsize: 1 %: 0.157898 cnt: 62))
+   ))
+)

@@ -1,0 +1,21 @@
+(monitor (info (exec "./a.out") (version "0.0.4") (sizeof-word 1))
+  (gc
+    (number: 0 alloc: #l3352239 heap: #l4259840 live: #l136944 lastfun: "unknown" time: #l1785450065254648000)
+    (number: 1 alloc: #l1744500 heap: #l4259840 live: #l128336 lastfun: "unknown" time: #l1785450065317811000)
+   )
+  (alloc 
+    (kbsize 4977)
+    (gc-count 2)
+    (files
+      (file: "lib/init.c"
+       lines: ((line: 574 kbsize: 47 %: 4.94066e-322 count: 64 types: #("vector" "keyword" "input-port" "output-port" "string" "mutex"))))
+      (file: "/home/feeley/fst-artifact/download/bglstone_nan/src/r7rs-ray/bigloo/r7rs-ray.c"
+       lines: ((line: 1317 kbsize: 3651 %: 5.68175e-322 count: 116861 types: #("vector"))          (line: 2467 kbsize: 1171 %: 0 count: 50000 types: #("vector"))          (line: 295 kbsize: 43 %: 0 count: 1287 types: #("string" "mutex" "bignum" "?" "pair" "class" "vector" "keyword" "symbol"))          (line: 1960 kbsize: 41 %: 5.68175e-322 count: 20 types: #("string" "procedure" "mutex" "output-port"))))
+       )
+   )
+  (types
+    (count 168870)
+    (types
+      (vector (kbsize: 4880 %: 98.063 cnt: 167297))
+   ))
+)

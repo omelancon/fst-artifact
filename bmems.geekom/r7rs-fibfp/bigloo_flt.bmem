@@ -1,0 +1,27 @@
+(monitor (info (exec "./a.out") (version "0.0.4") (sizeof-word 1))
+  (gc
+    (number: 0 alloc: #l104759 heap: #l4259840 live: #l125968 lastfun: "unknown" time: #l1785448974089385000)
+   )
+  (alloc 
+    (kbsize 102)
+    (gc-count 1)
+    (files
+      (file: "/home/feeley/fst-artifact/download/bglstone_flt/src/r7rs-fibfp/bigloo/r7rs-fibfp.c"
+       lines: ((line: 215 kbsize: 47 %: 4.94066e-322 count: 1287 types: #("string" "mutex" "bignum" "?" "pair" "class" "vector" "keyword" "symbol"))))
+      (file: "lib/init.c"
+       lines: ((line: 574 kbsize: 47 %: 5.68175e-322 count: 64 types: #("vector" "keyword" "input-port" "output-port" "string" "mutex"))))
+       )
+   )
+  (types
+    (count 1454)
+    (types
+      (vector (kbsize: 53 %: 52.7229 cnt: 271))
+      (string (kbsize: 21 %: 20.865 cnt: 516))
+      (symbol (kbsize: 8 %: 8.4766 cnt: 370))
+      (class (kbsize: 6 %: 6.682 cnt: 37))
+      (? (kbsize: 4 %: 4.27744 cnt: 150))
+      (mutex (kbsize: 1 %: 1.45095 cnt: 19))
+      (keyword (kbsize: 1 %: 1.4204 cnt: 62))
+      (bignum (kbsize: 0 %: 0.278735 cnt: 16))
+   ))
+)

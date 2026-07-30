@@ -1,0 +1,37 @@
+(monitor (info (exec "./a.out") (version "0.0.4") (sizeof-word 1))
+  (gc
+    (number: 0 alloc: #l151743 heap: #l4259840 live: #l1725696 lastfun: "unknown" time: #l1785448331286988000)
+    (number: 1 alloc: #l15712 heap: #l4325376 live: #l2784896 lastfun: "unknown" time: #l1785448331291316000)
+    (number: 2 alloc: #l21280 heap: #l5902336 live: #l3771600 lastfun: "unknown" time: #l1785448331297330000)
+    (number: 3 alloc: #l27072 heap: #l8134656 live: #l5429728 lastfun: "unknown" time: #l1785448331306387000)
+    (number: 4 alloc: #l34496 heap: #l10850304 live: #l7500880 lastfun: "unknown" time: #l1785448331315765000)
+    (number: 5 alloc: #l41648 heap: #l14471168 live: #l10087952 lastfun: "unknown" time: #l1785448331329345000)
+    (number: 6 alloc: #l54928 heap: #l19296256 live: #l13537888 lastfun: "unknown" time: #l1785448331347147000)
+    (number: 7 alloc: #l72672 heap: #l26255360 live: #l18202784 lastfun: "unknown" time: #l1785448331380105000)
+    (number: 8 alloc: #l97520 heap: #l34643968 live: #l24735936 lastfun: "unknown" time: #l1785448331417446000)
+    (number: 9 alloc: #l134816 heap: #l43032576 live: #l32547296 lastfun: "unknown" time: #l1785448331468780000)
+    (number: 10 alloc: #l157264 heap: #l60858368 live: #l42073168 lastfun: "unknown" time: #l1785448331545004000)
+    (number: 11 alloc: #l213808 heap: #l79732736 live: #l56363728 lastfun: "unknown" time: #l1785448331652996000)
+    (number: 12 alloc: #l286800 heap: #l109092864 live: #l74973856 lastfun: "unknown" time: #l1785448331811372000)
+    (number: 13 alloc: #l355760 heap: #l134258688 live: #l97705968 lastfun: "unknown" time: #l1785448331977481000)
+    (number: 14 alloc: #l446496 heap: #l176201728 live: #l127912560 lastfun: "unknown" time: #l1785448332192972000)
+    (number: 15 alloc: #l605344 heap: #l234921984 live: #l167130016 lastfun: "unknown" time: #l1785448332517641000)
+    (number: 16 alloc: #l826848 heap: #l293642240 live: #l215576480 lastfun: "unknown" time: #l1785448332866394000)
+    (number: 17 alloc: #l699232 heap: #l310419456 live: #l249050752 lastfun: "unknown" time: #l1785448333227990000)
+   )
+  (alloc 
+    (kbsize 4143)
+    (gc-count 18)
+    (files
+      (file: "lib/init.c"
+       lines: ((line: 574 kbsize: 47 %: 4.94066e-322 count: 64 types: #("vector" "keyword" "input-port" "output-port" "string" "mutex"))))
+      (file: "/home/feeley/fst-artifact/download/bglstone/src/r7rs-earley/bigloo/r7rs-earley.c"
+       lines: ((line: 514 kbsize: 1193 %: 5.68175e-322 count: 76380 types: #("pair"))          (line: 5602 kbsize: 753 %: 0 count: 48234 types: #("pair"))          (line: 481 kbsize: 749 %: 0 count: 47943 types: #("pair"))          (line: 5588 kbsize: 557 %: 0 count: 35649 types: #("pair"))          (line: 5401 kbsize: 321 %: 0 count: 20597 types: #("pair"))          (line: 5406 kbsize: 319 %: 0 count: 20471 types: #("pair"))          (line: 5387 kbsize: 116 %: 0 count: 7433 types: #("pair"))          (line: 268 kbsize: 47 %: 0 count: 1287 types: #("string" "mutex" "bignum" "?" "pair" "class" "vector" "keyword" "symbol"))))
+       )
+   )
+  (types
+    (count 258562)
+    (types
+      (pair (kbsize: 4011 %: 96.7947 cnt: 256714))
+   ))
+)

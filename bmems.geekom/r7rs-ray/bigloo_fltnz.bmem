@@ -1,0 +1,27 @@
+(monitor (info (exec "./a.out") (version "0.0.4") (sizeof-word 1))
+  (gc
+    (number: 0 alloc: #l1156804 heap: #l4259840 live: #l146224 lastfun: "unknown" time: #l1785449731615684000)
+    (number: 1 alloc: #l1041528 heap: #l4259840 live: #l146288 lastfun: "unknown" time: #l1785449731663575000)
+    (number: 2 alloc: #l1041352 heap: #l4259840 live: #l146272 lastfun: "unknown" time: #l1785449731712435000)
+    (number: 3 alloc: #l1041168 heap: #l4259840 live: #l146272 lastfun: "unknown" time: #l1785449731760243000)
+    (number: 4 alloc: #l1042176 heap: #l4259840 live: #l146272 lastfun: "unknown" time: #l1785449731808157000)
+    (number: 5 alloc: #l99044 heap: #l4259840 live: #l137664 lastfun: "unknown" time: #l1785449731813916000)
+   )
+  (alloc 
+    (kbsize 5294)
+    (gc-count 6)
+    (files
+      (file: "lib/init.c"
+       lines: ((line: 574 kbsize: 47 %: 4.94066e-322 count: 64 types: #("vector" "keyword" "input-port" "output-port" "string" "mutex"))))
+      (file: "/home/feeley/fst-artifact/download/bglstone_fltnz/src/r7rs-ray/bigloo/r7rs-ray.c"
+       lines: ((line: 1319 kbsize: 3651 %: 5.68175e-322 count: 116861 types: #("vector"))          (line: 2471 kbsize: 1171 %: 0 count: 50000 types: #("vector"))          (line: 3446 kbsize: 104 %: 0 count: 13339 types: #("real"))          (line: 3146 kbsize: 77 %: 0 count: 9970 types: #("real"))          (line: 3176 kbsize: 76 %: 0 count: 9833 types: #("real"))          (line: 2177 kbsize: 56 %: 0 count: 3589 types: #("pair"))          (line: 291 kbsize: 47 %: 0 count: 1287 types: #("string" "mutex" "bignum" "?" "pair" "class" "vector" "keyword" "symbol"))          (line: 1962 kbsize: 41 %: 5.68175e-322 count: 20 types: #("string" "procedure" "mutex" "output-port"))))
+       )
+   )
+  (types
+    (count 205443)
+    (types
+      (vector (kbsize: 4882 %: 92.2168 cnt: 167297))
+      (real (kbsize: 259 %: 4.89643 cnt: 33186))
+      (pair (kbsize: 56 %: 1.06055 cnt: 3594))
+   ))
+)
